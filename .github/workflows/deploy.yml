@@ -12,7 +12,7 @@ jobs:
         with:
           args: widget.zip
         env:
-          REPO_TOKEN: '${{ secrets.REPO_TOKEN }}'
+          GITHUB_TOKEN: '${{ secrets.REPO_TOKEN }}'
       - run: unzip -C widget widget.js -d help-widget
 
       - name: S3 Upload
