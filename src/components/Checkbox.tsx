@@ -1,6 +1,6 @@
-import { h, ComponentChildren } from "preact";
-import style from "./checkbox.css";
-import clsx from "clsx";
+import { h, ComponentChildren } from 'preact';
+import style from './checkbox.css';
+import clsx from 'clsx';
 
 interface InputProps {
   id: string;

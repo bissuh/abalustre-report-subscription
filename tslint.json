@@ -5,7 +5,7 @@
   "rules": {
     "eofline": false,
     "no-console": false,
-    "quotemark": [true, "single", "avoid-escape"],
+    "quotemark": [true, "single", "avoid-escape", "jsx-double"],
     "semicolon": [true, "always", "ignore-bound-class-methods"],
     "variable-name": [
       true,

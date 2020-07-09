@@ -3,7 +3,7 @@ interface InfraConfigurations {
 }
 
 export interface AppConfigurations {
-  id: string;
+  id?: string;
 }
 
 export type Configurations = InfraConfigurations & AppConfigurations;

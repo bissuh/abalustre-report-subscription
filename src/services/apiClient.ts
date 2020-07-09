@@ -1,5 +1,5 @@
-import axios, { AxiosError, AxiosInstance } from "axios";
-import { FormModel, WidgetApi } from "../models";
+import axios, { AxiosError, AxiosInstance } from 'axios';
+import { FormModel, WidgetApi } from '../models';
 
 interface ApiClientOptions {
   id: string;
@@ -7,7 +7,7 @@ interface ApiClientOptions {
 
 interface ApiRequest<TRequest = any> {
   readonly url: string;
-  readonly method?: "GET" | "DELETE" | "POST" | "PUT";
+  readonly method?: 'GET' | 'DELETE' | 'POST' | 'PUT';
   readonly requestData?: TRequest;
 }
 
@@ -17,7 +17,7 @@ export class ApiClient implements WidgetApi {
 
   constructor(options: ApiClientOptions) {
     this.client = axios.create({
-      baseURL: "https://qmk6lnstqb.execute-api.us-east-1.amazonaws.com/prod/",
+      baseURL: 'https://qmk6lnstqb.execute-api.us-east-1.amazonaws.com/prod/',
     });
     this.id = options.id;
 
@@ -34,14 +34,14 @@ export class ApiClient implements WidgetApi {
   public sendDailyForm = async (requestData: FormModel) =>
     await this.callApi<void>({
       url: `/daily-report/${this.id}/subscriber`,
-      method: "POST",
+      method: 'POST',
       requestData,
     });
 
   public sendMonthlyForm = async (requestData: FormModel) =>
     await this.callApi<void>({
       url: `/daily-report/${this.id}/subscriber`,
-      method: "POST",
+      method: 'POST',
       requestData,
     });
 
@@ -52,9 +52,9 @@ export class ApiClient implements WidgetApi {
       this.client
         .request<TResponse>({
           url: request.url,
-          method: request.method ?? "GET",
+          method: request.method ?? 'GET',
           data: request.requestData,
-          responseType: "json",
+          responseType: 'json',
         })
         .then((response) =>
           response?.status && response.status >= 200 && response.status < 400

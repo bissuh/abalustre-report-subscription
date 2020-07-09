@@ -1,11 +1,11 @@
-import { h } from "preact";
-import { useState } from "preact/hooks";
-import style from "./main.css";
-import clsx from "clsx";
-import SubscriptionForm from "./SubscriptionForm";
+import { h } from 'preact';
+import { useState } from 'preact/hooks';
+import style from './main.css';
+import clsx from 'clsx';
+import SubscriptionForm from './SubscriptionForm';
 
 const Main = () => {
-  const [openedModal, setOpenedModal] = useState(true);
+  const [openedModal, setOpenedModal] = useState(false);
 
   function openModal() {
     setOpenedModal(true);

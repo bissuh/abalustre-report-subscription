@@ -1,10 +1,10 @@
-import { h } from "preact";
-import { useContext, useEffect, useMemo, useState } from "preact/hooks";
-import { ServiceContext } from "../AppContext";
-import Field from "../components/Field";
-import Checkbox from "../components/Checkbox";
-import { useIsMounted } from "../hooks";
-import style from "./subscriptionForm.css";
+import { h } from 'preact';
+import { useContext, useEffect, useMemo, useState } from 'preact/hooks';
+import { ServiceContext } from '../AppContext';
+import Field from '../components/Field';
+import Checkbox from '../components/Checkbox';
+import { useIsMounted } from '../hooks';
+import style from './subscriptionForm.css';
 
 interface Props {
   onClose(): void;
@@ -16,9 +16,9 @@ const SubscriptionForm = ({ onClose }: Props) => {
 
   const [dailyNews, setDailyNews] = useState(false);
   const [monthlyNews, setMonthlyNews] = useState(false);
-  const [emailValue, setEmailValue] = useState("");
-  const [nameValue, setNameValue] = useState("");
-  const [serverError, setServerError] = useState("");
+  const [emailValue, setEmailValue] = useState('');
+  const [nameValue, setNameValue] = useState('');
+  const [serverError, setServerError] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [subscribed, setSubscribed] = useState(false);
 
@@ -26,13 +26,13 @@ const SubscriptionForm = ({ onClose }: Props) => {
   const emailError = useMemo(
     () =>
       mounted.current && (!emailValue || !emailRegex.test(emailValue))
-        ? "Digite um e-mail válido."
-        : "",
+        ? 'Digite um e-mail válido.'
+        : '',
     [emailValue, submitting, mounted]
   );
 
   const nameError = useMemo(
-    () => (mounted.current && !nameValue ? "Digite seu nome." : ""),
+    () => (mounted.current && !nameValue ? 'Digite seu nome.' : ''),
     [nameValue, submitting, mounted]
   );
 
@@ -65,7 +65,7 @@ const SubscriptionForm = ({ onClose }: Props) => {
       return;
     }
 
-    setServerError(""); // reset previous server error
+    setServerError(''); // reset previous server error
     if (!formValid) {
       setSubmitting(false);
       return;
@@ -150,7 +150,7 @@ const SubscriptionForm = ({ onClose }: Props) => {
         </button>
 
         <button type="submit" disabled={submitting || !formValid}>
-          {submitting ? "Salvando..." : "Salvar"}
+          {submitting ? 'Salvando...' : 'Salvar'}
         </button>
       </div>
     </form>

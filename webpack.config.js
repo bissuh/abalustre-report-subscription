@@ -16,6 +16,12 @@ module.exports = (env) => {
       module: {
         rules: [
           {
+            enforce: "pre",
+            test: /\.(ts|tsx)$/,
+            exclude: /node_modules|serviceWorker/,
+            loader: "tslint-loader",
+          },
+          {
             test: /\.(js|ts|tsx|jsx)$/,
             exclude: /node_modules/,
             use: {
