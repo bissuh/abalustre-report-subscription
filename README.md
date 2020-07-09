@@ -15,6 +15,6 @@ Copy and paste the code below inside your HTML page where you want your code to 
     js = d.createElement(s), fjs = d.getElementsByTagName(s)[0];
     js.id = o; js.src = f; js.async = 1; fjs.parentNode.insertBefore(js, fjs);
 }(window, document, 'script', 'aba', '//SOME_CDN/widget.js'));
-aba('init', { }); 
+aba('init', { id: 'your-organization-id' }); 
 </script>
 ```
