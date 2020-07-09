@@ -6,7 +6,7 @@
   "repository": "github:bissuh/abalustre-report-subscription",
   "scripts": {
     "build": "webpack --config webpack.config.js",
-    "build:release": "webpack --config webpack.config.js --env.prod --display-modules",
+    "build-release": "webpack --config webpack.config.js --env.prod --display-modules",
     "start": "webpack-dev-server --open",
     "lint": "tslint --project tsconfig.json"
   },
