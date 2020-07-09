@@ -1,0 +1,15 @@
+.root {
+  display: flex;
+  flex-direction: row;
+  align-items: left;
+  margin-bottom: 1rem;
+}
+
+.root.error input {
+  border: 1px solid var(--color-error);
+}
+
+.root.error > span {
+  color: var(--color-error);
+  font-size: 13px;
+}

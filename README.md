@@ -1,10 +1,10 @@
-### Abalustre Performance Report Subscription Widget
+## Abalustre Performance Report Subscription Widget
 
 This tool allow companies to add a report subscription widget as easy as copying and pasting the script below.
 
 At this point in time it cannot be customized.
 
-#### Usage
+### Usage
 
 Copy and paste the code below inside your HTML page where you want your code to be displayed.
 

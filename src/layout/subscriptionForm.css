@@ -1,0 +1,26 @@
+.actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.actions > button.secondary {
+  background-color: #f0f0f0;
+  color: var(--color-text);
+  border: none;
+}
+.actions > button.secondary:hover {
+  background-color: #d9d9d9;
+  filter: none;
+}
+
+.error {
+  color: var(--color-error);
+  margin: 12px 0;
+}
+
+.thanks {
+  text-align: center;
+  font-weight: bold;
+  color: var(--color-green);
+  margin: 50px auto;
+}
