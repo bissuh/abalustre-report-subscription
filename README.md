@@ -14,7 +14,16 @@ Copy and paste the code below inside your HTML page where you want your code to 
     w['AbalustreReportWidget']=o;w[o] = w[o] || function () { (w[o].q = w[o].q || []).push(arguments) };
     js = d.createElement(s), fjs = d.getElementsByTagName(s)[0];
     js.id = o; js.src = f; js.async = 1; fjs.parentNode.insertBefore(js, fjs);
-}(window, document, 'script', '_aba', '//SOME_CDN/widget.js'));
+}(window, document, 'script', '_aba', 'https://abalustre-report-subscription.s3.amazonaws.com/abalustre-report-subscription/widget.js'));
 _aba('init', { id: 'your-organization-id' }); 
 </script>
 ```
+
+#### Options
+
+You will place options in the `_aba('init', {<options>})` init file as the second parameter object attributes.
+
+| Option | Description |
+| - | - |
+| `buttonColor` | Hexadecimal format color. Default: `#0050b3`. |
+| `container` | ID of html div or element where the button is going to be placed. Default: `subscription`. |

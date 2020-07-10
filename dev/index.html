@@ -6,6 +6,7 @@
   </head>
 
   <body>
+    <div id="subscription" style="width: 600px; background-color: white;"></div>
     <script>
       (function (w, d, s, o, f, js, fjs) {
         w[o] =
@@ -18,8 +19,12 @@
         js.src = f;
         js.async = 1;
         fjs.parentNode.insertBefore(js, fjs);
-      })(window, document, "script", "_aba", "./widget.js");
-      _aba("init", { id: "79215660-bc8d-11ea-8031-65ae3470199e" });
+      })(window, document, 'script', '_aba', './widget.js');
+      _aba('init', {
+        id: '79215660-bc8d-11ea-8031-65ae3470199e',
+        container: 'subscription',
+        buttonColor: '#BE9836',
+      });
     </script>
   </body>
 </html>

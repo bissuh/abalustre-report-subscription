@@ -4,6 +4,8 @@ interface InfraConfigurations {
 
 export interface AppConfigurations {
   id?: string;
+  container: string;
+  buttonColor: string;
 }
 
 export type Configurations = InfraConfigurations & AppConfigurations;

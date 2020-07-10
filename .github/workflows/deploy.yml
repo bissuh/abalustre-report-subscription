@@ -17,9 +17,11 @@ jobs:
 
       - name: S3 Upload
         uses: jakejarvis/s3-sync-action@7ed8b112447abb09f1da74f3466e4194fc7a6311
+        with:
+          args: --acl public-read --follow-symlinks --delete
         env:
           SOURCE_DIR: './abalustre-report-subscription'
-          DEST_DIR: 'abalustre-report-subscription'
+          DEST_DIR: './'
           AWS_REGION: 'us-east-1'
           AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
