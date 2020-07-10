@@ -14,7 +14,7 @@ Copy and paste the code below inside your HTML page where you want your code to 
     w['AbalustreReportWidget']=o;w[o] = w[o] || function () { (w[o].q = w[o].q || []).push(arguments) };
     js = d.createElement(s), fjs = d.getElementsByTagName(s)[0];
     js.id = o; js.src = f; js.async = 1; fjs.parentNode.insertBefore(js, fjs);
-}(window, document, 'script', '_aba', 'https://abalustre-report-subscription.s3.amazonaws.com/abalustre-report-subscription/widget.js'));
+}(window, document, 'script', '_aba', 'https://abalustre-report-subscription.s3.amazonaws.com/widget.js'));
 _aba('init', { id: 'your-organization-id' }); 
 </script>
 ```
