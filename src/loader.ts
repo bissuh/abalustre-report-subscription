@@ -44,12 +44,16 @@ export default (
       case 'init':
         const loadedObject = Object.assign(defaultConfig, item[1]);
 
-        const wrappingElement =
-          win.document.getElementById(loadedObject.container) ||
-          win.document.body;
+        if (loadedObject.container) {
+          const wrappingElement = win.document.getElementById(
+            loadedObject.container
+          );
 
-        wrappingElement.setAttribute('id', `widget-${instanceName}`);
-        render(wrappingElement, loadedObject);
+          if (wrappingElement !== null) {
+            wrappingElement.setAttribute('id', `widget-${instanceName}`);
+            render(wrappingElement, loadedObject);
+          }
+        }
 
         win[`loaded-${instanceName}`] = true;
         break;

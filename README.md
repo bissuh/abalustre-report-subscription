@@ -26,4 +26,4 @@ You will place options in the `_aba('init', {<options>})` init file as the secon
 | Option | Description |
 | - | - |
 | `buttonColor` | Hexadecimal format color. Default: `#0050b3`. |
-| `container` | ID of html div or element where the button is going to be placed. Default: `subscription`. |
+| `container` | ID of html div or element where the button is going to be placed. When no element is found, the button is going to be ommited. |

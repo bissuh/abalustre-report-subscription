@@ -4,7 +4,7 @@ interface InfraConfigurations {
 
 export interface AppConfigurations {
   id?: string;
-  container: string;
+  container?: string;
   buttonColor: string;
 }
 

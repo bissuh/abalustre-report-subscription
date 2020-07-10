@@ -4,7 +4,6 @@ import loader from './loader';
 import { Configurations } from './models';
 
 const defaultConfig: Configurations = {
-  container: 'subscription',
   buttonColor: '#0050b3',
 };
 
