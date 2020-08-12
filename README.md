@@ -6,7 +6,7 @@ At this point in time it cannot be customized.
 
 ### Usage
 
-Copy and paste the code below inside your HTML page where you want your code to be displayed.
+Copy and paste the code below in the footer of your site. ake sure the `_aba('init');` is present.
 
 ```html
 <script>
@@ -15,7 +15,7 @@ Copy and paste the code below inside your HTML page where you want your code to 
     js = d.createElement(s), fjs = d.getElementsByTagName(s)[0];
     js.id = o; js.src = f; js.async = 1; fjs.parentNode.insertBefore(js, fjs);
 }(window, document, 'script', '_aba', 'https://abalustre-report-subscription.s3.amazonaws.com/widget.js'));
-_aba('initSubscription', { id: 'your-organization-id' }); 
+_aba('init'); 
 </script>
 ```
 
