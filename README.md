@@ -1,4 +1,4 @@
-## Abalustre Performance Report Subscription Widget
+## Abalustre Website Widgets
 
 This tool allow companies to add a report subscription widget as easy as copying and pasting the script below.
 
@@ -15,15 +15,36 @@ Copy and paste the code below inside your HTML page where you want your code to 
     js = d.createElement(s), fjs = d.getElementsByTagName(s)[0];
     js.id = o; js.src = f; js.async = 1; fjs.parentNode.insertBefore(js, fjs);
 }(window, document, 'script', '_aba', 'https://abalustre-report-subscription.s3.amazonaws.com/widget.js'));
-_aba('init', { id: 'your-organization-id' }); 
+_aba('initSubscription', { id: 'your-organization-id' }); 
 </script>
+```
+
+## Subscription
+
+```js
+_aba('initSubscription', { id: 'your-organization-id' }); 
 ```
 
 #### Options
 
-You will place options in the `_aba('init', {<options>})` init file as the second parameter object attributes.
+You will place options in the `_aba('initSubscription', {<options>})` init file as the second parameter object attributes.
 
 | Option | Description |
 | - | - |
 | `buttonColor` | Hexadecimal format color. Default: `#0050b3`. |
-| `container` | ID of html div or element where the button is going to be placed. When no element is found, the button is going to be ommited. |
+| `container` | HTML element ID where the button is going to be placed. When no element is found, the button is going to be ommited. |
+
+## Performance Table
+
+```js
+_aba('initPerformance', { id: 'your-organization-id' }); 
+```
+
+#### Options
+
+You will place options in the `_aba('initPerformance', {<options>})` init file as the second parameter object attributes.
+
+| Option | Description |
+| - | - |
+| `language` | Set the language to be used in table render. Options: `pt`. Default: `en`. |
+| `container` | HTML element ID where the button is going to be placed. When no element is found, the button is going to be ommited. |
