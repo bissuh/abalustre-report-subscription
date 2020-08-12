@@ -11,7 +11,11 @@ export default (
   win: Window,
   defaultConfig: Configurations,
   scriptElement: Element | null,
-  render: (element: HTMLElement, config: Configurations) => void
+  render: (
+    element: HTMLElement,
+    config: Configurations,
+    component: string
+  ) => void
 ) => {
   const instanceName =
     scriptElement?.attributes.getNamedItem('id')?.value ?? DEFAULT_NAME;
@@ -40,18 +44,33 @@ export default (
       continue;
     }
 
-    switch (methodName) {
-      case 'init':
-        const loadedObject = Object.assign(defaultConfig, item[1]);
+    const loadedObject = Object.assign(defaultConfig, item[1]);
 
+    switch (methodName) {
+      case 'initSubscription':
         if (loadedObject.container) {
           const wrappingElement = win.document.getElementById(
             loadedObject.container
           );
 
           if (wrappingElement !== null) {
-            wrappingElement.setAttribute('id', `widget-${instanceName}`);
-            render(wrappingElement, loadedObject);
+            wrappingElement.setAttribute('id', `${instanceName}-subscription`);
+            render(wrappingElement, loadedObject, methodName);
+          }
+        }
+
+        win[`loaded-${instanceName}`] = true;
+        break;
+
+      case 'initPerformance':
+        if (loadedObject.container) {
+          const wrappingElement = win.document.getElementById(
+            loadedObject.container
+          );
+
+          if (wrappingElement !== null) {
+            wrappingElement.setAttribute('id', `${instanceName}-performance`);
+            render(wrappingElement, loadedObject, methodName);
           }
         }
 

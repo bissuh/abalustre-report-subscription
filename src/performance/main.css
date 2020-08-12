@@ -1,0 +1,82 @@
+.scope {
+  --border-radius: 5px;
+  --color: #0050b3;
+  --color-green: #237804;
+  --color-bg: #fff;
+  --color-bg-secondary: #bfbfbf;
+  --color-secondary: #920de9;
+  --color-text: #262626;
+  --color-text-secondary: #999;
+  --color-error: #cb2431;
+  --hover-brightness: 1.2;
+  --hover-opacity: 0.5;
+  --line-height: 150%;
+}
+
+.reset {
+  composes: scope;
+  color: var(--color-text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+  margin: 0;
+  font-size: 0.8em;
+}
+
+.reset label {
+  font-weight: bold;
+  margin-bottom: 0.2rem;
+}
+
+.table {
+  composes: reset;
+  width: 100%;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0 0 5px #cccccc;
+}
+
+.table thead {
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.table tr {
+  vertical-align: middle;
+}
+
+.table td {
+  padding: 5px;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.algRight {
+  text-align: right;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 10px;
+  border-radius: 6px;
+  top: 20px;
+  left: -35px;
+  text-transform: capitalize;
+
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}

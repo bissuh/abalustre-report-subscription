@@ -4,7 +4,7 @@ import Main from './layout/Main';
 import { AppContext } from './AppContext';
 
 type Props = Configurations;
-export const App = ({ element, ...appSettings }: Props) => (
+export const SubscriptionApp = ({ element, ...appSettings }: Props) => (
   <AppContext config={appSettings}>
     <Main />
   </AppContext>
