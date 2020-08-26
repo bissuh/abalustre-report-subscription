@@ -46,8 +46,6 @@ const Main = () => {
       </div>
     );
 
-  console.log(pools);
-
   return (
     <table className={style.table}>
       <thead>

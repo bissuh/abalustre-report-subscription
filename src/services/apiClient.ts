@@ -39,19 +39,19 @@ export class ApiClient implements WidgetApi {
 
   public sendMonthlyForm = async (requestData: FormModel) =>
     await this.callApi<void>({
-      url: `${HOSTS.PROD.DAILY_REPORT}/daily-report/${this.id}/subscriber`,
+      url: `${HOSTS.PROD.MONTHLY_REPORT}/monthly-report/${this.id}/subscriber`,
       method: 'POST',
       requestData,
     });
 
   public getPools = async () =>
-    await this.callApi<{ data: PoolModel[] }>({
+    await this.callApi<{ data: [PoolModel] }>({
       url: `${HOSTS.PROD.PROFILE}/organization/${this.id}/pool?benchmark=true`,
       method: 'GET',
     });
 
   public getPoolPerformance = async (poolId: string) =>
-    await this.callApi<{ data: PerformanceModel[] }>({
+    await this.callApi<{ data: PerformanceModel }>({
       url: `${HOSTS.PROD.VOLUME}/pool/${poolId}/performance?benchmark=true`,
       method: 'GET',
     });
