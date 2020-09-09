@@ -4,32 +4,40 @@ import { Text } from 'preact-i18n';
 import { useCallback, useContext, useEffect, useState } from 'preact/hooks';
 import { ServiceContext } from '../AppContext';
 import { ConfigContext } from '../AppContext';
+import { numberFilters } from '../utils';
 
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
+import localizedFormat from 'dayjs/plugin/localizedFormat';
+import 'dayjs/locale/pt-br';
+import 'dayjs/locale/en';
+
+dayjs.extend(localizedFormat);
 dayjs.extend(utc);
 
 const Main = () => {
+  const { format } = numberFilters;
   const config = useContext(ConfigContext);
   const [pools, setPools] = useState<any[]>([]);
   const service = useContext(ServiceContext);
 
-  const loadPools = useCallback(async () => {
-    const poolsResponse = await service?.getPools();
+  dayjs.locale(config.language === 'pt-BR' ? 'pt-br' : 'en');
 
-    if (!poolsResponse) return;
+  const loadPools = useCallback(async () => {
+    const widgetResponse = await service?.getWidgetPools();
+    const poolsList = widgetResponse?.data.pools || [];
+
+    if (poolsList.length === 0) return;
 
     const responses = await Promise.all(
-      poolsResponse.data.map((pool) => service?.getPoolPerformance(pool.id))
+      poolsList.map((pool) => service?.getPoolPerformance(pool.poolId))
     );
 
     if (!responses) setPools([]);
     const newPools: any[] = [];
 
-    poolsResponse.data.forEach((pool, idx) => {
-      const benchmark = responses[idx];
-      newPools.push({ ...pool, ...benchmark?.data });
-      newPools.push({ ...pool.benchmark, ...benchmark?.data.benchmark });
+    poolsList.forEach((pool, idx) => {
+      newPools.push({ ...pool, ...responses[idx]?.data });
     });
 
     setPools(newPools);
@@ -42,7 +50,9 @@ const Main = () => {
   if (pools.length === 0)
     return (
       <div className={style.table}>
-        <p>Loading...</p>
+        <p>
+          <Text id="loading">Loading</Text>...
+        </p>
       </div>
     );
 
@@ -91,24 +101,61 @@ const Main = () => {
             <td>
               <strong>{pool.name}</strong>
             </td>
-            <td>{pool.date && dayjs.utc(pool.date).format('DD/MM/YYYY')}</td>
+            <td>{pool.date && dayjs.utc(pool.date).format('DD MMM YYYY')}</td>
             <td className={style.algRight}>
-              {pool.quota ? (pool.quota / 100000000).toFixed(2) : '-'}
+              {format({
+                value: pool.quota,
+                divisor: 100000000,
+                locale: config.language,
+                maxFraction: 8,
+                nullValue: '-',
+              })}
             </td>
             <td className={style.algRight}>
-              {pool.day ? `${(pool.day * 100).toFixed(2)}%` : '-'}
+              {format({
+                value: pool.day,
+                locale: config.language,
+                unit: 'percent',
+                nullValue: '-',
+                maxFraction: 2,
+              })}
             </td>
             <td className={style.algRight}>
-              {pool.month ? `${(pool.month * 100).toFixed(2)}%` : '-'}
+              {format({
+                value: pool.month,
+                locale: config.language,
+                unit: 'percent',
+                nullValue: '-',
+                maxFraction: 2,
+              })}
             </td>
             <td className={style.algRight}>
-              {pool.year ? `${(pool.year * 100).toFixed(2)}%` : '-'}
+              {format({
+                value: pool.year,
+                locale: config.language,
+                unit: 'percent',
+                nullValue: '-',
+                maxFraction: 2,
+              })}
             </td>
             <td className={style.algRight}>
-              {pool.twoYears ? `${(pool.twoYears * 100).toFixed(2)}%` : '-'}
+              {format({
+                value: pool.twoYears,
+                locale: config.language,
+                unit: 'percent',
+                nullValue: '-',
+                maxFraction: 2,
+              })}
             </td>
             <td className={style.algRight}>
-              {pool.allTime ? `${(pool.allTime * 100).toFixed(2)}%` : '-'}
+              {format({
+                value: pool.allTime,
+                locale: config.language,
+                unit: 'percent',
+                nullValue: '-',
+                divisor: 1,
+                maxFraction: 2,
+              })}
             </td>
             <td>
               {pool.start_date && (

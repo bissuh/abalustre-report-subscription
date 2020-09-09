@@ -1,9 +1,16 @@
 import axios, { AxiosError, AxiosInstance } from 'axios';
-import { FormModel, WidgetApi, PoolModel, PerformanceModel } from '../models';
+import {
+  FormModel,
+  WidgetApi,
+  PoolModel,
+  PerformanceModel,
+  WidgetPool,
+} from '../models';
 import { HOSTS } from '../constants/hosts.constants';
 
 interface ApiClientOptions {
   id: string;
+  widgetId: string;
 }
 
 interface ApiRequest<TRequest = any> {
@@ -15,10 +22,12 @@ interface ApiRequest<TRequest = any> {
 export class ApiClient implements WidgetApi {
   private readonly client: AxiosInstance;
   private readonly id: string;
+  private readonly widgetId: string;
 
   constructor(options: ApiClientOptions) {
     this.client = axios.create();
     this.id = options.id;
+    this.widgetId = options.widgetId;
 
     this.client.interceptors.response.use(undefined, (error: AxiosError) => {
       console.log(
@@ -46,13 +55,19 @@ export class ApiClient implements WidgetApi {
 
   public getPools = async () =>
     await this.callApi<{ data: [PoolModel] }>({
-      url: `${HOSTS.PROD.PROFILE}/organization/${this.id}/pool?benchmark=true`,
+      url: `${HOSTS.PROD.PROFILE}/organization/${this.id}/pool`,
       method: 'GET',
     });
 
   public getPoolPerformance = async (poolId: string) =>
     await this.callApi<{ data: PerformanceModel }>({
-      url: `${HOSTS.PROD.VOLUME}/pool/${poolId}/performance?benchmark=true`,
+      url: `${HOSTS.PROD.VOLUME}/pool/${poolId}/performance`,
+      method: 'GET',
+    });
+
+  public getWidgetPools = async () =>
+    await this.callApi<WidgetPool>({
+      url: `${HOSTS.PROD.WIDGET}/organization/${this.id}/widget/${this.widgetId}`,
       method: 'GET',
     });
 

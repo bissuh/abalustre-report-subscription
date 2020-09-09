@@ -14,7 +14,12 @@ interface Props {
 }
 
 export const AppContext = ({ children, config }: Props) => {
-  const services = useRef(new ApiClient({ id: config.id || '' }));
+  const services = useRef(
+    new ApiClient({
+      id: config.id || '',
+      widgetId: config.widgetId || '',
+    })
+  );
   return (
     <ConfigContext.Provider value={config}>
       <ServiceContext.Provider value={services.current}>

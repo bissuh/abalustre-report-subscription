@@ -10,5 +10,6 @@ export const HOSTS = {
     QUOTA: 'https://8zc5mtkzqg.execute-api.us-east-1.amazonaws.com/prod',
     TICKER: 'https://iafyojiy49.execute-api.us-east-1.amazonaws.com/prod',
     VOLUME: 'https://hfdw7xl4t2.execute-api.us-east-1.amazonaws.com/prod',
+    WIDGET: 'https://r52fj6r9i4.execute-api.us-east-1.amazonaws.com/prod',
   },
 };

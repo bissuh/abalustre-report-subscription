@@ -4,6 +4,7 @@ interface InfraConfigurations {
 
 export interface AppConfigurations {
   id?: string;
+  widgetId?: string;
   container?: string;
   buttonColor: string;
   language: string;
@@ -16,12 +17,19 @@ export interface FormModel {
   name: string;
 }
 
+export interface WidgetPool {
+  data: {
+    pools: [PoolModel];
+  };
+}
+
 export interface PoolModel {
   id: string;
   name: string;
   organization: string;
   start_date: string;
   status: string;
+  poolId: string;
   benchmark: {
     id: string;
     name: string;
@@ -55,4 +63,5 @@ export interface WidgetApi {
   sendMonthlyForm: (model: FormModel) => Promise<void>;
   getPools: () => Promise<{ data: [PoolModel] }>;
   getPoolPerformance: (poolId: string) => Promise<{ data: PerformanceModel }>;
+  getWidgetPools: () => Promise<WidgetPool>;
 }
