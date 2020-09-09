@@ -4,7 +4,9 @@ import { Text } from 'preact-i18n';
 import { useCallback, useContext, useEffect, useState } from 'preact/hooks';
 import { ServiceContext } from '../AppContext';
 import { ConfigContext } from '../AppContext';
+import { WidgetPool } from '../models';
 import { numberFilters } from '../utils';
+import { PERIODS } from '../constants';
 
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
@@ -19,6 +21,7 @@ const Main = () => {
   const { format } = numberFilters;
   const config = useContext(ConfigContext);
   const [pools, setPools] = useState<any[]>([]);
+  const [widget, setWidget] = useState<WidgetPool | undefined>(undefined);
   const service = useContext(ServiceContext);
 
   dayjs.locale(config.language === 'pt-BR' ? 'pt-br' : 'en');
@@ -26,6 +29,7 @@ const Main = () => {
   const loadPools = useCallback(async () => {
     const widgetResponse = await service?.getWidgetPools();
     const poolsList = widgetResponse?.data.pools || [];
+    setWidget(widgetResponse);
 
     if (poolsList.length === 0) return;
 
@@ -70,16 +74,11 @@ const Main = () => {
           <td className={style.algRight}>
             <Text id="day">day</Text>
           </td>
-          <td className={style.algRight}>
-            <Text id="month">month</Text>
-          </td>
-          <td className={style.algRight}>
-            <Text id="year">year</Text>
-          </td>
-          <td className={style.algRight}>24M</td>
-          <td className={style.algRight}>
-            <Text id="alltime">all time</Text>
-          </td>
+          {widget?.data.periods.map((item: string) => (
+            <td className={style.algRight}>
+              <Text id={item}>{PERIODS.DETAILS[item].label}</Text>
+            </td>
+          ))}
           <td></td>
           <td>status</td>
         </tr>
@@ -120,43 +119,24 @@ const Main = () => {
                 maxFraction: 2,
               })}
             </td>
-            <td className={style.algRight}>
-              {format({
-                value: pool.month,
-                locale: config.language,
-                unit: 'percent',
-                nullValue: '-',
-                maxFraction: 2,
-              })}
-            </td>
-            <td className={style.algRight}>
-              {format({
-                value: pool.year,
-                locale: config.language,
-                unit: 'percent',
-                nullValue: '-',
-                maxFraction: 2,
-              })}
-            </td>
-            <td className={style.algRight}>
-              {format({
-                value: pool.twoYears,
-                locale: config.language,
-                unit: 'percent',
-                nullValue: '-',
-                maxFraction: 2,
-              })}
-            </td>
-            <td className={style.algRight}>
-              {format({
-                value: pool.allTime,
-                locale: config.language,
-                unit: 'percent',
-                nullValue: '-',
-                divisor: 1,
-                maxFraction: 2,
-              })}
-            </td>
+            {widget?.data.periods.map((item: string) => {
+              if (pool[item])
+                return (
+                  <td className={style.algRight}>
+                    {format({
+                      value: pool[item],
+                      locale: config.language,
+                      unit: 'percent',
+                      nullValue: '-',
+                      divisor: 1,
+                      maxFraction: 2,
+                    })}
+                  </td>
+                );
+
+              return <td className={style.algRight}>-</td>;
+            })}
+
             <td>
               {pool.start_date && (
                 <div className={style.tooltip}>
