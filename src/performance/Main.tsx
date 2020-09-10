@@ -117,6 +117,7 @@ const Main = () => {
                 locale: config.language,
                 unit: 'percent',
                 nullValue: '-',
+                divisor: 1,
                 maxFraction: 2,
               })}
             </td>

@@ -31,15 +31,9 @@ const SubscriptionForm = ({ onClose }: Props) => {
     [emailValue, submitting, mounted]
   );
 
-  const nameError = useMemo(
-    () => (mounted.current && !nameValue ? 'Digite seu nome.' : ''),
-    [nameValue, submitting, mounted]
-  );
-
-  const formValid = useMemo(
-    () => ![emailError, nameError].reduce((m, n) => m + n),
-    [emailError, nameError]
-  );
+  const formValid = useMemo(() => ![emailError].reduce((m, n) => m + n), [
+    emailError,
+  ]);
 
   const subscribe = async () => {
     try {
@@ -97,7 +91,6 @@ const SubscriptionForm = ({ onClose }: Props) => {
       <Field
         name="name"
         title="Nome"
-        error={nameError}
         render={(inputProps) => (
           <input
             type="text"
