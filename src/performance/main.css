@@ -14,12 +14,11 @@
 }
 
 .table {
-  font-family: 'Arimo', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 400 !important;
   font-size: 100%;
   color: #9f9f9f;
   width: 100%;
-  border-radius: 5px;
   padding: 10px;
   box-shadow: 0 0 5px #cccccc;
   background-color: #ffffff;

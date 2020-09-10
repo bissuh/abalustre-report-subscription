@@ -51,17 +51,13 @@ const Main = () => {
     loadPools();
   }, [loadPools]);
 
-  if (pools.length === 0)
-    return (
-      <div className={style.table}>
-        <p>
-          <Text id="loading">Loading</Text>...
-        </p>
-      </div>
-    );
+  if (pools.length === 0) return <div className={style.table}></div>;
 
   return (
-    <table className={style.table}>
+    <table
+      className={style.table}
+      style={{ borderTop: `3px solid ${config.buttonColor}` }}
+    >
       <thead>
         <tr className={style.header}>
           <td>
@@ -89,8 +85,8 @@ const Main = () => {
             style={{
               padding: 0,
               borderCollapse: 'collapse',
-              height: '3px',
-              backgroundColor: config.buttonColor,
+              height: '2px',
+              backgroundColor: '#9f9f9f',
             }}
             colSpan={11}
           ></td>
@@ -106,6 +102,7 @@ const Main = () => {
                 divisor: 100000000,
                 locale: config.language,
                 maxFraction: 8,
+                minFraction: pool.decimal_places,
                 nullValue: '-',
               })}
             </td>
@@ -117,6 +114,7 @@ const Main = () => {
                 nullValue: '-',
                 divisor: 1,
                 maxFraction: 2,
+                minFraction: 2,
               })}
             </td>
             {widget?.data.periods.map((item: string) => {
@@ -130,6 +128,7 @@ const Main = () => {
                       nullValue: '-',
                       divisor: 1,
                       maxFraction: 2,
+                      minFraction: 2,
                     })}
                   </td>
                 );
