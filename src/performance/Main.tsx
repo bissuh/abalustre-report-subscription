@@ -95,7 +95,7 @@ const Main = () => {
         {pools.map((pool) => (
           <tr id={pool.id}>
             <td>{pool.name}</td>
-            <td>{pool.date && dayjs.utc(pool.date).format('DD/MM/YYYY')}</td>
+            <td>{pool.date && dayjs.utc(pool.date).format('DD/MM/YY')}</td>
             <td className={style.algRight}>
               {format({
                 value: pool.quota,
