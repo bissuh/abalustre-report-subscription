@@ -92,9 +92,10 @@ const Main = () => {
               height: '3px',
               backgroundColor: config.buttonColor,
             }}
-            colSpan={10}
+            colSpan={11}
           ></td>
         </tr>
+
         {pools.map((pool) => (
           <tr id={pool.id}>
             <td>
