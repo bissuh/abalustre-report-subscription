@@ -97,10 +97,8 @@ const Main = () => {
         </tr>
 
         {pools.map((pool) => (
-          <tr id={pool.id}>
-            <td>
-              <strong>{pool.name}</strong>
-            </td>
+          <tr id={pool.id} className="border_bottom">
+            <td>{pool.name}</td>
             <td>{pool.date && dayjs.utc(pool.date).format('DD MMM YYYY')}</td>
             <td className={style.algRight}>
               {format({

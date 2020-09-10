@@ -29,6 +29,10 @@
 
 .table {
   composes: reset;
+  font-family: 'Arimo', sans-serif;
+  font-weight: 400;
+  font-size: 100%;
+  color: #9f9f9f;
   width: 100%;
   border: 1px solid #cccccc;
   border-radius: 5px;
@@ -37,6 +41,7 @@
 }
 
 .table thead {
+  color: #333333;
   font-weight: 700;
   text-transform: uppercase;
 }
@@ -47,6 +52,10 @@
 
 .table td {
   padding: 5px;
+}
+
+tr.border_bottom td {
+  border-bottom: 2px solid #333333;
 }
 
 .capitalize {
