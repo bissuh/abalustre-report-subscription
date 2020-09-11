@@ -75,8 +75,7 @@ const Main = () => {
               <Text id={item}>{PERIODS.DETAILS[item].label}</Text>
             </td>
           ))}
-          <td></td>
-          <td>status</td>
+          <td style={{ textAlign: 'center' }}>status</td>
         </tr>
       </thead>
       <tbody>
@@ -94,7 +93,39 @@ const Main = () => {
 
         {pools.map((pool) => (
           <tr id={pool.id}>
-            <td>{pool.name}</td>
+            <td style={{ verticalAlign: 'top' }}>
+              {pool.details_webpage ? (
+                <a
+                  className={style.cleanLink}
+                  href={`${pool.details_webpage}?utm_source=website&utm_medium=widget`}
+                >
+                  {pool.name}
+                </a>
+              ) : (
+                pool.name
+              )}
+              {pool.start_date && (
+                <div className={style.tooltip}>
+                  <img
+                    alt={dayjs.utc(pool.start_date).format('DD/MM/YYYY')}
+                    src="https://abalustre-assets.s3.amazonaws.com/information.png"
+                    style={{ cursor: 'pointer' }}
+                    width={15}
+                  />
+                  <span className={style.tooltiptext}>
+                    <strong>
+                      <p>{pool.fullname || pool.name}</p>
+                    </strong>
+                    <p>CNPJ: {pool.document}</p>
+                    <p>
+                      <Text id="since">Since</Text>
+                      {`: `}
+                      {dayjs.utc(pool.start_date).format('DD MMMM YYYY')}
+                    </p>
+                  </span>
+                </div>
+              )}
+            </td>
             <td>{pool.date && dayjs.utc(pool.date).format('DD MMM YY')}</td>
             <td className={style.algRight}>
               {format({
@@ -136,24 +167,7 @@ const Main = () => {
               return <td className={style.algRight}>-</td>;
             })}
 
-            <td>
-              {pool.start_date && (
-                <div className={style.tooltip}>
-                  <img
-                    alt={dayjs.utc(pool.start_date).format('DD/MM/YYYY')}
-                    src="https://abalustre-assets.s3.amazonaws.com/information.png"
-                    style={{ marginTop: '3px', cursor: 'pointer' }}
-                    width={15}
-                  />
-                  <span className={style.tooltiptext}>
-                    <Text id="since">Since</Text>
-                    {` `}
-                    {dayjs.utc(pool.start_date).format('DD/MM/YYYY')}
-                  </span>
-                </div>
-              )}
-            </td>
-            <td className={style.capitalize}>
+            <td className={style.capitalize} style={{ textAlign: 'center' }}>
               {pool.start_date && <Text id={pool.status}>{pool.status}</Text>}
             </td>
           </tr>
