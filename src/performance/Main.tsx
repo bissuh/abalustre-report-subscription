@@ -51,8 +51,6 @@ const Main = () => {
     loadPools();
   }, [loadPools]);
 
-  if (pools.length === 0) return <div className={style.table}></div>;
-
   return (
     <table
       className={style.table}
@@ -63,6 +61,7 @@ const Main = () => {
           <td>
             <Text id="pool">pool</Text>
           </td>
+          <td></td>
           <td>DATA</td>
           <td className={style.algRight}>
             <Text id="quota">quota</Text>
@@ -104,6 +103,9 @@ const Main = () => {
               ) : (
                 pool.name
               )}
+            </td>
+
+            <td>
               {pool.start_date && (
                 <div className={style.tooltip}>
                   <img
@@ -126,7 +128,9 @@ const Main = () => {
                 </div>
               )}
             </td>
-            <td>{pool.date && dayjs.utc(pool.date).format('DD MMM YY')}</td>
+            <td style={{ minWidth: '75px' }}>
+              {pool.date && dayjs.utc(pool.date).format('DD MMM YY')}
+            </td>
             <td className={style.algRight}>
               {format({
                 value: pool.quota,
