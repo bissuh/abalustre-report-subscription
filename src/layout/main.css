@@ -59,7 +59,8 @@
   display: inline-block;
   font-size: 14px;
   margin: 0;
-  padding: 0.7rem 2rem;
+  padding: 10px;
+  height: 37px;
   outline: none;
 }
 

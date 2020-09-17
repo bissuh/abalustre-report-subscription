@@ -35,7 +35,7 @@ const Main = () => {
         onClick={openModal}
         style={{ backgroundColor: config.buttonColor, width: '100%' }}
       >
-        RECEBER RELATÓRIOS DE PERFORMANCE
+        RELATÓRIOS E COTAS
       </button>
     </div>
   );
