@@ -1,5 +1,5 @@
 .scope {
-  --border-radius: 5px;
+  --border-radius: 0px;
   --color: #0050b3;
   --color-green: #237804;
   --color-bg: #fff;
@@ -16,8 +16,7 @@
 .reset {
   composes: scope;
   color: var(--color-text);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
   margin: 0;
 }
 
@@ -46,7 +45,6 @@
 
 .reset a {
   color: var(--color-secondary);
-  font-weight: bold;
   text-decoration: none;
 }
 
@@ -56,10 +54,10 @@
 }
 
 .reset button {
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
   border-radius: var(--border-radius);
   display: inline-block;
-  font-size: medium;
-  font-weight: bold;
+  font-size: 14px;
   margin: 0;
   padding: 0.7rem 2rem;
   outline: none;
@@ -106,7 +104,6 @@
 }
 
 .reset label {
-  font-weight: bold;
   margin-bottom: 0.2rem;
 }
 
@@ -129,6 +126,7 @@
 }
 
 .abaModalContent {
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
   z-index: 100000;
   background-color: #ffffff;
   position: fixed;
@@ -145,5 +143,5 @@
 }
 
 .level2 {
-  font-size: 16pt;
+  font-size: 16px;
 }
