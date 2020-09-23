@@ -1,5 +1,6 @@
 import axios, { AxiosError, AxiosInstance } from 'axios';
 import {
+  AumReportModel,
   FormModel,
   WidgetApi,
   OrganizationModel,
