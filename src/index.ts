@@ -1,6 +1,7 @@
 import { h, render } from 'preact';
 import { SubscriptionApp } from './SubscriptionApp';
 import { PerformanceApp } from './PerformanceApp';
+import { PoolDescription } from './PoolDescription';
 import loader from './loader';
 import { Configurations } from './models';
 
@@ -21,6 +22,10 @@ loader(
 
       case 'initSubscription':
         render(h(SubscriptionApp, { ...config }), el);
+        break;
+
+      case 'poolDescription':
+        render(h(PoolDescription, { ...config }), el);
         break;
 
       default:

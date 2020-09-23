@@ -77,6 +77,21 @@ export default (
         win[`loaded-${instanceName}`] = true;
         break;
 
+      case 'poolDescription':
+        if (loadedObject.container) {
+          const wrappingElement = win.document.getElementById(
+            loadedObject.container
+          );
+
+          if (wrappingElement !== null) {
+            wrappingElement.setAttribute('id', `${instanceName}-description`);
+            render(wrappingElement, loadedObject, methodName);
+          }
+        }
+
+        win[`loaded-${instanceName}`] = true;
+        break;
+
       default:
         console.warn(`Unsupported method [${methodName}]`, item[1]);
     }

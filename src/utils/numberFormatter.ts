@@ -1,6 +1,6 @@
 /* Currency Filters */
 interface FormatterOptions {
-  value: number;
+  value?: number;
   divisor?: number;
   type?: string;
   locale: string;

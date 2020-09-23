@@ -1,0 +1,67 @@
+.main {
+  border-spacing: 0 !important;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #ffffff;
+}
+
+.row td {
+  padding: 15px;
+  border-bottom: 1px solid #dddddd;
+}
+
+.row p {
+  margin: 0 0 10px 0;
+}
+
+.label {
+  min-width: 150px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 0 30px;
+  text-align: right;
+}
+
+.body {
+  color: #9f9f9f;
+}
+
+.risk-box {
+  display: flex;
+  flex-direction: row;
+}
+
+.risk-box div {
+  width: 20px;
+  height: 20px;
+  margin-right: 1px;
+}
+
+.risk {
+  background-color: #be9836;
+}
+
+.non-risk {
+  background-color: #dddddd;
+}
+
+.copy {
+  margin-left: 10px;
+  padding: 5px 10px;
+}
+
+.invisibleInput {
+  background-color: #ffffff;
+  border: none;
+  color: #9f9f9f;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 100%;
+  outline: none;
+  padding: 0;
+  margin: 0;
+}
+
+.copyFeedback {
+  visibility: hidden;
+  margin-left: 10px;
+  color: green;
+}

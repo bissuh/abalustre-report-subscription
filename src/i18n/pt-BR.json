@@ -1,13 +1,56 @@
 {
+  "about": "sobre",
+  "administrator": "administradora",
+  "administrative_fee": "taxa de administração",
+  "after_quotization": "após a conversão de cotas",
   "alltime": "início",
   "allTime": "início",
+  "auditor": "auditora",
+  "aum_strategy": "PL Estratégia",
+  "aum_average": "PL Médio",
+
+  "bloomberg_code": "código Bloomberg",
+  "business_days": "dia(s) útil(eis)",
+
   "closed": "fechado",
+  "copy": "copiar",
+  "copied": "copiado",
+  "custodian": "Custodiante",
+
+  "document": "CNPJ",
+
   "day": "dia",
+
   "loading": "carregando",
+
+  "manager": "gestora",
+  "minimum_balance": "saldo mínimo",
+  "minimum_balance_pco": "saldo mínimo para PCO",
+  "minimum_first_application": "aplicação inicial mínima",
+  "minimum_first_application_pco": "aplicação inicial mínima para PCO",
+  "minimum_transaction": "movimentação mínima",
+  "minimum_transaction_pco": "movimentação mínima para PCO",
   "month": "mês",
+
+  "non-business_days": "dia(s) corrido(s)",
+
   "open": "aberto",
+
+  "performance_fee": "taxa de performance",
+  "policy": "política",
   "pool": "fundo",
+
   "quota": "cota",
+  "quota_application": "emissão de cotas",
+  "quota_redemption": "conversão de cotas no resgate",
+
+  "recommended_investors": "público alvo",
+  "redemption_payment": "pagamento do resgate",
+  "risk_profile": "Perfil de Risco",
+
   "since": "início",
+
+  "taxing": "Tributação",
+
   "year": "ano"
 }
