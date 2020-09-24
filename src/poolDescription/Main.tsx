@@ -45,7 +45,7 @@ const Main = () => {
     if (!temp || !aum) return;
     setPool(temp);
     setOrganization(org?.data);
-    setDescription(temp.description?.split('\\n') || ['']);
+    setDescription(temp.description?.split(/\r?\n/g) || ['']);
     setAumAverage(aum.data.aum_average);
     setAumStrategy(aum.data.aum_strategy);
 
