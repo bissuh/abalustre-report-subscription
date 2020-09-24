@@ -50,14 +50,14 @@ const Main = () => {
     setAumStrategy(aum.data.aum_strategy);
 
     const boxOn: preact.JSX.Element[] = [];
-    for (let i = 1; i <= (temp.risk || 0) / 10; i++) {
+    for (let i = 1; i <= (temp.risk || 0); i++) {
       boxOn.push(<div className={style.risk}></div>);
     }
     boxOn.map((item) => item);
     setBoxes(boxOn);
 
     const boxOff: preact.JSX.Element[] = [];
-    for (let i = 1; i <= 10 - (temp.risk || 0) / 10; i++) {
+    for (let i = 1; i <= 50 - (temp.risk || 0); i++) {
       boxOff.push(<div className={style['non-risk']}></div>);
     }
     boxOff.map((item) => item);
@@ -108,8 +108,24 @@ const Main = () => {
           <div className={style['risk-box']}>
             {boxes.map((item) => item)}
             {clean.map((item) => item)}
-            <div></div>
-            {(pool?.risk || 0) / 10}/10
+            <div style={{ width: '10px' }}></div>
+            {format({
+              value: pool?.risk || 0,
+              divisor: 10,
+              locale: config.language,
+              maxFraction: 1,
+              minFraction: 1,
+              nullValue: '-',
+            })}{' '}
+            /{' '}
+            {format({
+              value: 50,
+              divisor: 10,
+              locale: config.language,
+              maxFraction: 1,
+              minFraction: 1,
+              nullValue: '-',
+            })}
           </div>
         </td>
       </tr>
