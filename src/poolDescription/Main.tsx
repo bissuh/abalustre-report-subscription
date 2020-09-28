@@ -426,7 +426,7 @@ const Main = () => {
             nullValue: '-',
             type: 'BRL',
           })}{' '}
-          MM
+          MM (<Text id="last_12_months">last 12 months</Text>)
         </td>
       </tr>
 

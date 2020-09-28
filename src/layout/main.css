@@ -60,7 +60,7 @@
   font-size: 14px;
   margin: 0;
   padding: 10px;
-  height: 37px;
+  min-height: 37px;
   outline: none;
 }
 
