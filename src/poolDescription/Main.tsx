@@ -412,41 +412,45 @@ const Main = () => {
         </td>
       </tr>
 
-      <tr className={style.row}>
-        <td className={style.label}>
-          <Text id="aum_average">aum average</Text>
-        </td>
-        <td className={style.body}>
-          {format({
-            value: parseInt(aumAverage, 10),
-            divisor: 100000000,
-            locale: config.language,
-            maxFraction: 2,
-            minFraction: 2,
-            nullValue: '-',
-            type: 'BRL',
-          })}{' '}
-          MM (<Text id="last_12_months">last 12 months</Text>)
-        </td>
-      </tr>
+      {aumAverage && (
+        <tr className={style.row}>
+          <td className={style.label}>
+            <Text id="aum_average">aum average</Text>
+          </td>
+          <td className={style.body}>
+            {format({
+              value: parseInt(aumAverage, 10),
+              divisor: 100000000,
+              locale: config.language,
+              maxFraction: 2,
+              minFraction: 2,
+              nullValue: '-',
+              type: 'BRL',
+            })}{' '}
+            MM (<Text id="last_12_months">last 12 months</Text>)
+          </td>
+        </tr>
+      )}
 
-      <tr className={style.row}>
-        <td className={style.label}>
-          <Text id="aum_strategy">aum strategy</Text>
-        </td>
-        <td className={style.body}>
-          {format({
-            value: parseInt(aumStrategy, 10),
-            divisor: 100000000,
-            locale: config.language,
-            maxFraction: 2,
-            minFraction: 2,
-            nullValue: '-',
-            type: 'BRL',
-          })}{' '}
-          MM
-        </td>
-      </tr>
+      {aumStrategy && (
+        <tr className={style.row}>
+          <td className={style.label}>
+            <Text id="aum_strategy">aum strategy</Text>
+          </td>
+          <td className={style.body}>
+            {format({
+              value: parseInt(aumStrategy, 10),
+              divisor: 100000000,
+              locale: config.language,
+              maxFraction: 2,
+              minFraction: 2,
+              nullValue: '-',
+              type: 'BRL',
+            })}{' '}
+            MM
+          </td>
+        </tr>
+      )}
     </table>
   );
 };
