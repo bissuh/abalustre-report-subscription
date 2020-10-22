@@ -2,6 +2,7 @@ import axios, { AxiosError, AxiosInstance } from 'axios';
 import {
   AumReportModel,
   FormModel,
+  MonthlyReport,
   WidgetApi,
   OrganizationModel,
   PoolModel,
@@ -82,6 +83,12 @@ export class ApiClient implements WidgetApi {
   public getWidgetPools = async () =>
     await this.callApi<WidgetPool>({
       url: `${HOSTS.PROD.WIDGET}/organization/${this.id}/widget/${this.widgetId}`,
+      method: 'GET',
+    });
+
+  public getMonthlyReport = async (month: string) =>
+    await this.callApi<{ data: MonthlyReport }>({
+      url: `${HOSTS.PROD.PROFILE}/organization/${this.id}/monthly-report/${month}`,
       method: 'GET',
     });
 

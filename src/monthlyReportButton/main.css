@@ -1,0 +1,52 @@
+.scope {
+  --border-radius: 0px;
+  --color: #0050b3;
+  --color-green: #237804;
+  --color-bg: #fff;
+  --color-bg-secondary: #bfbfbf;
+  --color-secondary: #920de9;
+  --color-text: #262626;
+  --color-text-secondary: #999;
+  --color-error: #cb2431;
+  --hover-brightness: 1.2;
+  --hover-opacity: 0.5;
+  --line-height: 150%;
+}
+
+.reset {
+  composes: scope;
+  color: var(--color-text);
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+.reset button {
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  border-radius: var(--border-radius);
+  display: inline-block;
+  font-size: 14px;
+  margin: 0;
+  padding: 10px;
+  min-height: 37px;
+  outline: none;
+}
+
+.reset button:hover:not(:disabled) {
+  cursor: pointer;
+  filter: brightness(var(--hover-brightness));
+}
+
+.reset button {
+  background-color: var(--color);
+  border: none;
+  color: var(--color-bg);
+}
+
+.reset button:disabled {
+  cursor: default;
+  background-color: var(--color-bg-secondary);
+}
+
+.root {
+  composes: reset;
+}

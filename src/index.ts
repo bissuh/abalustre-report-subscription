@@ -1,4 +1,5 @@
 import { h, render } from 'preact';
+import { MonthlyReportButton } from './MonthlyReportButton';
 import { SubscriptionApp } from './SubscriptionApp';
 import { PerformanceApp } from './PerformanceApp';
 import { PoolDescription } from './PoolDescription';
@@ -26,6 +27,10 @@ loader(
 
       case 'poolDescription':
         render(h(PoolDescription, { ...config }), el);
+        break;
+
+      case 'monthlyReportButton':
+        render(h(MonthlyReportButton, { ...config }), el);
         break;
 
       default:

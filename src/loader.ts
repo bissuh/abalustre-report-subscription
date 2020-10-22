@@ -46,54 +46,44 @@ export default (
 
     const loadedObject = Object.assign(defaultConfig, item[1]);
 
-    switch (methodName) {
-      case 'initSubscription':
-        if (loadedObject.container) {
-          const wrappingElement = win.document.getElementById(
-            loadedObject.container
+    const wrappingElement = win.document.getElementById(loadedObject.container);
+
+    if (loadedObject.container && wrappingElement !== null) {
+      switch (methodName) {
+        case 'initSubscription':
+          wrappingElement.setAttribute('id', `${instanceName}-subscription`);
+          render(wrappingElement, loadedObject, methodName);
+
+          win[`loaded-${instanceName}`] = true;
+          break;
+
+        case 'initPerformance':
+          wrappingElement.setAttribute('id', `${instanceName}-performance`);
+          render(wrappingElement, loadedObject, methodName);
+
+          win[`loaded-${instanceName}`] = true;
+          break;
+
+        case 'poolDescription':
+          wrappingElement.setAttribute('id', `${instanceName}-description`);
+          render(wrappingElement, loadedObject, methodName);
+
+          win[`loaded-${instanceName}`] = true;
+          break;
+
+        case 'monthlyReportButton':
+          wrappingElement.setAttribute(
+            'id',
+            `${instanceName}-monthlyReportButton`
           );
+          render(wrappingElement, loadedObject, methodName);
 
-          if (wrappingElement !== null) {
-            wrappingElement.setAttribute('id', `${instanceName}-subscription`);
-            render(wrappingElement, loadedObject, methodName);
-          }
-        }
+          win[`loaded-${instanceName}`] = true;
+          break;
 
-        win[`loaded-${instanceName}`] = true;
-        break;
-
-      case 'initPerformance':
-        if (loadedObject.container) {
-          const wrappingElement = win.document.getElementById(
-            loadedObject.container
-          );
-
-          if (wrappingElement !== null) {
-            wrappingElement.setAttribute('id', `${instanceName}-performance`);
-            render(wrappingElement, loadedObject, methodName);
-          }
-        }
-
-        win[`loaded-${instanceName}`] = true;
-        break;
-
-      case 'poolDescription':
-        if (loadedObject.container) {
-          const wrappingElement = win.document.getElementById(
-            loadedObject.container
-          );
-
-          if (wrappingElement !== null) {
-            wrappingElement.setAttribute('id', `${instanceName}-description`);
-            render(wrappingElement, loadedObject, methodName);
-          }
-        }
-
-        win[`loaded-${instanceName}`] = true;
-        break;
-
-      default:
-        console.warn(`Unsupported method [${methodName}]`, item[1]);
+        default:
+          console.warn(`Unsupported method [${methodName}]`, item[1]);
+      }
     }
   }
 

@@ -23,6 +23,11 @@ export interface FormModel {
   name: string;
 }
 
+export interface MonthlyReport {
+  month: string;
+  path: string;
+}
+
 export interface WidgetPool {
   data: {
     periods: [string];
@@ -105,4 +110,5 @@ export interface WidgetApi {
   getPoolAum: (poolId: string) => Promise<{ data: AumReportModel }>;
   getPoolPerformance: (poolId: string) => Promise<{ data: PerformanceModel }>;
   getWidgetPools: () => Promise<WidgetPool>;
+  getMonthlyReport: (month: string) => Promise<{ data: MonthlyReport }>;
 }
