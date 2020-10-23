@@ -16,6 +16,7 @@ const Main = () => {
     .format('MMMM')
     .toLowerCase();
 
+  const [loading, setLoading] = useState(false);
   const [year, setYear] = useState(currentYear);
   const [month, setMonth] = useState(currentMonth);
 
@@ -25,12 +26,14 @@ const Main = () => {
   );
 
   const search = async () => {
+    setLoading(true);
     let selectedMonth = months.findIndex((item) => item === month);
     if (selectedMonth >= 0) selectedMonth += 1;
 
-    let result = await service?.getMonthlyReport(`${year}-${selectedMonth}`);
+    const result = await service?.getMonthlyReport(`${year}-${selectedMonth}`);
 
     window.open(result?.data.path, '_blank');
+    setLoading(false);
   };
 
   const months = [
@@ -50,7 +53,7 @@ const Main = () => {
 
   return (
     <div className={style.root}>
-      <Spacer padding="0" space={'0'}>
+      <Spacer padding="0" space={'10'}>
         <select
           name="year"
           id="year"
@@ -74,9 +77,17 @@ const Main = () => {
         </select>
 
         <button
-          style={{ backgroundColor: config.buttonColor }}
+          disabled={loading}
           onClick={search}
+          style={{ backgroundColor: config.buttonColor }}
         >
+          {loading && (
+            <img
+              src="https://ticker-assets.s3.amazonaws.com/images/loading.svg"
+              style={{ margin: 0, marginRight: '10px' }}
+              width={14}
+            />
+          )}
           <Text id="view">view</Text>
         </button>
       </Spacer>

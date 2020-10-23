@@ -29,6 +29,7 @@
   padding: 10px;
   min-height: 37px;
   outline: none;
+  text-transform: capitalize;
 }
 
 .reset button:hover:not(:disabled) {
