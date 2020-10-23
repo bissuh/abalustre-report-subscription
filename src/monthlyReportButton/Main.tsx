@@ -23,7 +23,7 @@ const Main = () => {
         );
       }
 
-      let data = response?.data;
+      const data = response?.data;
 
       window.open(
         `https://abalustre.com/${config.id}/monthly-report/${data?.month}`,
