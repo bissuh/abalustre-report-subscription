@@ -39,6 +39,7 @@ const SubscriptionForm = ({ onClose }: Props) => {
     try {
       if (dailyNews) {
         await service?.sendDailyForm({ email: emailValue, name: nameValue });
+        await service?.sendMonthlyForm({ email: emailValue, name: nameValue });
       }
 
       if (monthlyNews) {
@@ -117,7 +118,7 @@ const SubscriptionForm = ({ onClose }: Props) => {
       />
       <Checkbox
         name="dailyReport"
-        title="Relatório Diário"
+        title="Relatório Diário + Mensal"
         render={(inputProps) => (
           <input
             type="checkbox"

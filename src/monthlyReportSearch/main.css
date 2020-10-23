@@ -29,6 +29,7 @@
   padding: 10px 20px;
   min-height: 37px;
   outline: none;
+  text-transform: uppercase;
 }
 
 .reset button:hover:not(:disabled) {
