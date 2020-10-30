@@ -42,14 +42,11 @@ const Main = () => {
         onClick={openModal}
         style={{ backgroundColor: config.buttonColor, width: '100%' }}
       >
-        {loading && (
-          <img
-            src="https://ticker-assets.s3.amazonaws.com/images/loading.svg"
-            style={{ margin: 0, marginRight: '10px' }}
-            width={14}
-          />
+        {loading ? (
+          <Text id="loading">loading</Text>
+        ) : (
+          <Text id="monthly-report">monthly report</Text>
         )}
-        <Text id="monthly-report">monthly report</Text>
       </button>
     </div>
   );
