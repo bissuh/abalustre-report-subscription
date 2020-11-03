@@ -10,18 +10,12 @@ const Main = () => {
   const service = useContext(ServiceContext);
   const [loading, setLoading] = useState(false);
 
-  const openModal = async () => {
+  const openModal = async ({ monthsBack = 1 }) => {
     setLoading(true);
     try {
-      let response = await service?.getMonthlyReport(
-        dayjs().subtract(1, 'month').format('YYYY-MM-DD')
+      const response = await service?.getMonthlyReport(
+        dayjs().subtract(monthsBack, 'month').format('YYYY-MM-DD')
       );
-
-      if (!response?.data) {
-        response = await service?.getMonthlyReport(
-          dayjs().subtract(2, 'month').format('YYYY-MM-DD')
-        );
-      }
 
       const data = response?.data;
 
@@ -30,7 +24,7 @@ const Main = () => {
         '_blank'
       );
     } catch (e) {
-      console.log(e);
+      await openModal({ monthsBack: 2 });
     }
     setLoading(false);
   };
@@ -39,7 +33,7 @@ const Main = () => {
     <div className={style.root}>
       <button
         disabled={loading}
-        onClick={openModal}
+        onClick={() => openModal({})}
         style={{ backgroundColor: config.buttonColor, width: '100%' }}
       >
         {loading ? (
