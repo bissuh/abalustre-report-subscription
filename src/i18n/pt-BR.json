@@ -12,6 +12,7 @@
   "bloomberg_code": "código Bloomberg",
   "business_days": "dia(s) útil(eis)",
 
+  "close": "fechar",
   "closed": "fechado",
   "copy": "copiar",
   "copied": "copiado",
@@ -48,6 +49,7 @@
 
   "recommended_investors": "público alvo",
   "redemption_payment": "pagamento do resgate",
+  "report-not-available": "Este relatório ainda não está disponível.",
   "risk_profile": "Perfil de Risco",
 
   "since": "início",

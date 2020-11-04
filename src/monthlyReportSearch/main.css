@@ -70,3 +70,48 @@
 .root {
   composes: reset;
 }
+
+.abaModal {
+  z-index: 100000;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  overflow: auto;
+}
+
+.abaModalContent {
+  display: flex;
+  flex-direction: column;
+  align-content: stretch;
+  justify-content: center;
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  z-index: 100000;
+  background-color: #ffffff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 5% auto;
+  width: 80%;
+  max-width: 300px;
+  min-height: 100px;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 0 #333333;
+  text-align: center;
+}
+
+.level2 {
+  font-size: 16px;
+}
+
+.closeButton {
+  margin-top: 20px;
+  cursor: pointer;
+}
