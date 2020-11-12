@@ -13,18 +13,15 @@ const Main = () => {
   const openModal = async ({ monthsBack = 1 }) => {
     setLoading(true);
     try {
+      console.log(monthsBack - 2);
       const response = await service?.getMonthlyReport(
         dayjs().subtract(monthsBack, 'month').format('YYYY-MM-DD')
       );
 
       const data = response?.data;
-
-      window.open(
-        `https://abalustre.com/${config.id}/monthly-report/${data?.month}`,
-        '_blank'
-      );
+      window.location.href = data?.path || '#';
     } catch (e) {
-      await openModal({ monthsBack: 2 });
+      await openModal({ monthsBack: monthsBack + 1 });
     }
     setLoading(false);
   };
