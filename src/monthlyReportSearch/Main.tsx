@@ -36,7 +36,7 @@ const Main = () => {
       const result = await service?.getMonthlyReport(
         `${year}-${selectedMonth}`
       );
-      window.open(result?.data.path, '_blank');
+      window.location.href = result?.data.path || '#';
     } catch (e) {
       console.log(e);
       setOpenedModal(true);
