@@ -1,0 +1,92 @@
+.scope {
+  --border-radius: 0px;
+  --color: #0050b3;
+  --color-green: #237804;
+  --color-bg: #fff;
+  --color-bg-secondary: #bfbfbf;
+  --color-secondary: #920de9;
+  --color-text: #262626;
+  --color-text-secondary: #999;
+  --color-error: #cb2431;
+  --hover-brightness: 1.2;
+  --hover-opacity: 0.5;
+  --line-height: 150%;
+}
+
+.reset {
+  composes: scope;
+  color: var(--color-text);
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+.root {
+  composes: reset;
+}
+
+.group {
+  margin-bottom: 20px;
+}
+
+.title {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+  font-size: 24px;
+}
+
+.title:hover {
+  background-color: #eee;
+}
+
+.yearToggle {
+  display: flex;
+  justify-content: center;
+  align-content: stretch;
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  font-size: 22px;
+  background: var(--color);
+  margin-right: 10px;
+}
+
+.close {
+  transition: all 0.5s;
+  transform: rotate(-90deg);
+}
+
+.open {
+  transition: all 0.5s;
+  transform: rotate(0deg);
+}
+
+.closeList {
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.openList {
+  transition: all 1s;
+  height: auto;
+  opacity: 1;
+}
+
+.listItem {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 20px;
+  margin-left: 50px;
+  cursor: pointer;
+}
+
+.pdfIcon {
+  margin-right: 10px;
+  padding-bottom: 5px;
+  border-bottom: 2px solid;
+}

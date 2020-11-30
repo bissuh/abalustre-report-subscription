@@ -2,6 +2,12 @@ interface InfraConfigurations {
   element?: HTMLElement;
 }
 
+export interface Pagination {
+  pages: number;
+  items: number;
+  current: number;
+}
+
 export interface AumReportModel {
   aum_average: string;
   aum_strategy: string;
@@ -111,4 +117,10 @@ export interface WidgetApi {
   getPoolPerformance: (poolId: string) => Promise<{ data: PerformanceModel }>;
   getWidgetPools: () => Promise<WidgetPool>;
   getMonthlyReport: (month: string) => Promise<{ data: MonthlyReport }>;
+  getMonthlyReports: (
+    page?: number
+  ) => Promise<{
+    data: [MonthlyReport];
+    pagination: Pagination;
+  }>;
 }

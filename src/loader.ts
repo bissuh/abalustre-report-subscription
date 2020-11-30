@@ -91,6 +91,16 @@ export default (
           win[`loaded-${instanceName}`] = true;
           break;
 
+        case 'monthlyReportList':
+          wrappingElement.setAttribute(
+            'id',
+            `${instanceName}-monthlyReportSearch`
+          );
+          render(wrappingElement, loadedObject, methodName);
+
+          win[`loaded-${instanceName}`] = true;
+          break;
+
         default:
           console.warn(`Unsupported method [${methodName}]`, item[1]);
       }

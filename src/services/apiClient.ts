@@ -5,6 +5,7 @@ import {
   MonthlyReport,
   WidgetApi,
   OrganizationModel,
+  Pagination,
   PoolModel,
   PerformanceModel,
   WidgetPool,
@@ -89,6 +90,14 @@ export class ApiClient implements WidgetApi {
   public getMonthlyReport = async (month: string) =>
     await this.callApi<{ data: MonthlyReport }>({
       url: `${HOSTS.PROD.PROFILE}/organization/${this.id}/monthly-report/${month}`,
+      method: 'GET',
+    });
+
+  public getMonthlyReports = async (page?: number) =>
+    await this.callApi<{ data: [MonthlyReport]; pagination: Pagination }>({
+      url: `${HOSTS.PROD.PROFILE}/organization/${this.id}/monthly-report?page=${
+        page || 1
+      }`,
       method: 'GET',
     });
 
