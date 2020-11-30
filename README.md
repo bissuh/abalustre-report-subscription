@@ -105,3 +105,21 @@ You will place options in the `_aba('initPerformance', {<options>})` init file a
 | `buttonColor` | Hexadecimal format color. Default: `#0050b3`. |
 | `language` | Set the language to be used in table render. Options: `pt`. Default: `en`. |
 | `container` | HTML element ID where the button is going to be placed. When no element is found, the button is going to be ommited. |
+
+## Monthly Report List
+
+```js
+_aba('monthlyReportList', {
+  id: 'your-organization-id',
+});
+```
+
+#### Options
+
+You will place options in the `_aba('initPerformance', {<options>})` init file as the second parameter object attributes.
+
+| Option | Description |
+| - | - |
+| `buttonColor` | Hexadecimal format color. Default: `#0050b3`. |
+| `language` | Set the language to be used in table render. Options: `pt`. Default: `en`. |
+| `container` | HTML element ID where the button is going to be placed. When no element is found, the button is going to be ommited. |
