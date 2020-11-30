@@ -94,7 +94,7 @@ export default (
         case 'monthlyReportList':
           wrappingElement.setAttribute(
             'id',
-            `${instanceName}-monthlyReportSearch`
+            `${instanceName}-monthlyReportList`
           );
           render(wrappingElement, loadedObject, methodName);
 
