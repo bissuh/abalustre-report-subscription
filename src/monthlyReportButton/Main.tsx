@@ -1,5 +1,5 @@
 import { h } from 'preact';
-import { useContext, useState } from 'preact/hooks';
+import { useContext, useEffect, useState } from 'preact/hooks';
 import style from './main.css';
 import dayjs from 'dayjs';
 import { Text } from 'preact-i18n';
@@ -9,6 +9,7 @@ const Main = () => {
   const config = useContext(ConfigContext);
   const service = useContext(ServiceContext);
   const [loading, setLoading] = useState(false);
+  const [path, setPath] = useState('#');
 
   const openModal = async ({ monthsBack = 1 }) => {
     setLoading(true);
@@ -19,18 +20,23 @@ const Main = () => {
       );
 
       const data = response?.data;
-      window.location.href = data?.path || '#';
+      setPath(data?.path || '#');
     } catch (e) {
       await openModal({ monthsBack: monthsBack + 1 });
     }
     setLoading(false);
   };
 
+  useEffect(() => {
+    openModal({});
+  }, []);
+
   return (
     <div className={style.root}>
-      <button
+      <a
+        href={path}
         disabled={loading}
-        onClick={() => openModal({})}
+        target="_blank"
         style={{ backgroundColor: config.buttonColor, width: '100%' }}
       >
         {loading ? (
@@ -38,7 +44,7 @@ const Main = () => {
         ) : (
           <Text id="monthly-report">monthly report</Text>
         )}
-      </button>
+      </a>
     </div>
   );
 };

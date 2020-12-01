@@ -20,30 +20,31 @@
   margin: 0;
 }
 
-.reset button {
+.reset a {
   font-family: 'Montserrat', Arial, Helvetica, sans-serif;
   border-radius: var(--border-radius);
   display: inline-block;
   font-size: 14px;
   margin: 0;
   padding: 10px;
-  min-height: 37px;
   outline: none;
   text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
 }
 
-.reset button:hover:not(:disabled) {
+.reset a:hover:not(:disabled) {
   cursor: pointer;
   filter: brightness(var(--hover-brightness));
 }
 
-.reset button {
+.reset a {
   background-color: var(--color);
   border: none;
   color: var(--color-bg);
 }
 
-.reset button:disabled {
+.reset a:disabled {
   cursor: default;
   background-color: var(--color-bg-secondary);
 }
