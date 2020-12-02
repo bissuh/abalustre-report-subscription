@@ -32,11 +32,13 @@
   text-transform: uppercase;
   text-decoration: none;
   text-align: center;
+  color: var(--color-bg);
 }
 
 .root:hover:not(:disabled) {
   cursor: pointer;
   filter: brightness(var(--hover-brightness));
+  color: var(--color-bg);
 }
 
 .root {
@@ -46,6 +48,7 @@
 }
 
 .root:disabled {
+  color: var(--color-bg);
   cursor: default;
   background-color: var(--color-bg-secondary);
 }
@@ -54,4 +57,5 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  color: var(--color-bg);
 }
