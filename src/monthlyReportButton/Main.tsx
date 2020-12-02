@@ -14,7 +14,6 @@ const Main = () => {
   const openModal = async ({ monthsBack = 1 }) => {
     setLoading(true);
     try {
-      console.log(monthsBack - 2);
       const response = await service?.getMonthlyReport(
         dayjs().subtract(monthsBack, 'month').format('YYYY-MM-DD')
       );
@@ -32,20 +31,21 @@ const Main = () => {
   }, []);
 
   return (
-    <div className={style.root}>
-      <a
-        href={path}
-        disabled={loading}
-        target="_blank"
-        style={{ backgroundColor: config.buttonColor, width: '100%' }}
-      >
+    <a
+      href={path}
+      disabled={loading}
+      target="_blank"
+      className={style.root}
+      style={{ backgroundColor: config.buttonColor, width: '100%' }}
+    >
+      <div style={{ minHeight: '37px' }}>
         {loading ? (
           <Text id="loading">loading</Text>
         ) : (
           <Text id="monthly-report">monthly report</Text>
         )}
-      </a>
-    </div>
+      </div>
+    </a>
   );
 };
 

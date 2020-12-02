@@ -20,35 +20,38 @@
   margin: 0;
 }
 
-.reset a {
+.root {
+  composes: reset;
+
   font-family: 'Montserrat', Arial, Helvetica, sans-serif;
   border-radius: var(--border-radius);
   display: inline-block;
   font-size: 14px;
   margin: 0;
-  padding: 10px;
   outline: none;
   text-transform: uppercase;
   text-decoration: none;
   text-align: center;
 }
 
-.reset a:hover:not(:disabled) {
+.root:hover:not(:disabled) {
   cursor: pointer;
   filter: brightness(var(--hover-brightness));
 }
 
-.reset a {
+.root {
   background-color: var(--color);
   border: none;
   color: var(--color-bg);
 }
 
-.reset a:disabled {
+.root:disabled {
   cursor: default;
   background-color: var(--color-bg-secondary);
 }
 
-.root {
-  composes: reset;
+.root div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
