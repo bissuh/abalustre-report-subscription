@@ -28,6 +28,7 @@ const Main = () => {
   const [clean, setClean] = useState<preact.JSX.Element[]>([]);
   const [aumAverage, setAumAverage] = useState<string>('');
   const [aumStrategy, setAumStrategy] = useState<string>('');
+  const [aumPeriod, setAumPeriod] = useState<number>(12);
 
   dayjs.locale(config.language === 'pt-BR' ? 'pt-br' : 'en');
 
@@ -48,6 +49,9 @@ const Main = () => {
     setDescription(temp.description?.split(/\r?\n/g) || ['']);
     setAumAverage(aum.data.aum_average);
     setAumStrategy(aum.data.aum_strategy);
+
+    if (dayjs().diff(dayjs.utc(temp.start_date), 'month') < 12)
+      setAumPeriod(dayjs().diff(dayjs.utc(temp.start_date), 'month'));
 
     const boxOn: preact.JSX.Element[] = [];
     for (let i = 1; i <= (temp.risk || 0); i++) {
@@ -427,7 +431,7 @@ const Main = () => {
               nullValue: '-',
               type: 'BRL',
             })}{' '}
-            MM (<Text id="last_12_months">last 12 months</Text>)
+            MM ({aumPeriod} <Text id="last_12_months">last months</Text>)
           </td>
         </tr>
       )}
