@@ -278,20 +278,6 @@ const Main = () => {
 
       <tr className={style.row}>
         <td className={style.label}>
-          <Text id="redemption_payment">redemption payment</Text>
-        </td>
-        <td className={style.body}>
-          {`${pool?.redemption_payment || ''} `}
-          <Text id={`${pool?.redemption_payment_day_type}_days`}>
-            {pool?.redemption_payment_day_type}
-          </Text>
-          {` `}
-          <Text id="after_quotization">after quotization</Text>
-        </td>
-      </tr>
-
-      <tr className={style.row}>
-        <td className={style.label}>
           <Text id="administrative_fee">administrative fee</Text>
         </td>
         <td className={style.body}>
