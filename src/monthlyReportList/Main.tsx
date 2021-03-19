@@ -87,6 +87,7 @@ const Main = () => {
               className={`list ${
                 selectedYear === item ? style.openList : style.closeList
               }`}
+              style={{ display: 'block' }}
             >
               {reports[item].map((report: any) => {
                 const [year, month] = report.month.split('-');

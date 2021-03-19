@@ -59,10 +59,12 @@ const Main = () => {
       <thead>
         <tr className={style.header}>
           <td>
-            <Text id="pool">pool</Text>
+            <Text id="fund">fund</Text>
           </td>
           <td></td>
-          <td>DATA</td>
+          <td>
+            <Text id="date">date</Text>
+          </td>
           <td className={style.algRight}>
             <Text id="quota">quota</Text>
           </td>

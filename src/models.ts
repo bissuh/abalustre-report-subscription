@@ -15,6 +15,7 @@ export interface AumReportModel {
 
 export interface AppConfigurations {
   buttonColor: string;
+  buttonLabel: string;
   container?: string;
   id?: string;
   language: string;

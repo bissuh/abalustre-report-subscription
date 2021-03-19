@@ -3,6 +3,7 @@ import { useContext, useState } from 'preact/hooks';
 import style from './main.css';
 import SubscriptionForm from './SubscriptionForm';
 import { ConfigContext } from '../AppContext';
+import { Text } from 'preact-i18n';
 
 const Main = () => {
   const config = useContext(ConfigContext);
@@ -35,7 +36,7 @@ const Main = () => {
         onClick={openModal}
         style={{ backgroundColor: config.buttonColor, width: '100%' }}
       >
-        RELATÓRIOS E COTAS
+        {config.buttonLabel || <Text id="subscribe">Subscribe</Text>}
       </button>
     </div>
   );

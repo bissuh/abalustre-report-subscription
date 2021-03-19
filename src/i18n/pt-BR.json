@@ -18,9 +18,11 @@
   "copied": "copiado",
   "custodian": "Custodiante",
 
+  "day": "dia",
+  "date": "data",
   "document": "CNPJ",
 
-  "day": "dia",
+  "fund": "fundo",
 
   "last_12_months": "últimos meses",
   "loading": "carregando",
@@ -41,7 +43,6 @@
 
   "performance_fee": "taxa de performance",
   "policy": "política",
-  "pool": "fundo",
 
   "quota": "cota",
   "quota_application": "emissão de cotas",
@@ -54,6 +55,7 @@
 
   "since": "início",
   "search": "Buscar",
+  "subscribe": "Inscrever-me",
 
   "taxing": "Tributação",
 
