@@ -15,12 +15,13 @@ export interface AumReportModel {
 
 export interface AppConfigurations {
   buttonColor: string;
-  buttonLabel: string;
+  buttonLabel?: string;
   container?: string;
   id?: string;
   language: string;
   poolId?: string;
   widgetId?: string;
+  style?: object;
 }
 
 export type Configurations = InfraConfigurations & AppConfigurations;

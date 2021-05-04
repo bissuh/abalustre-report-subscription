@@ -64,6 +64,13 @@ export default (
           win[`loaded-${instanceName}`] = true;
           break;
 
+        case 'initPoolTable':
+          wrappingElement.setAttribute('id', `${instanceName}-pool-table`);
+          render(wrappingElement, loadedObject, methodName);
+
+          win[`loaded-${instanceName}`] = true;
+          break;
+
         case 'poolDescription':
           wrappingElement.setAttribute('id', `${instanceName}-description`);
           render(wrappingElement, loadedObject, methodName);

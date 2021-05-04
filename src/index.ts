@@ -4,6 +4,7 @@ import { MonthlyReportSearch } from './MonthlyReportSearch';
 import { MonthlyReportList } from './MonthlyReportList';
 import { SubscriptionApp } from './SubscriptionApp';
 import { PerformanceApp } from './PerformanceApp';
+import { PoolTableApp } from './PoolTableApp';
 import { PoolDescription } from './PoolDescription';
 import loader from './loader';
 import { Configurations } from './models';
@@ -11,6 +12,7 @@ import { Configurations } from './models';
 const defaultConfig: Configurations = {
   buttonColor: '#0050b3',
   language: 'en',
+  style: {},
 };
 
 loader(
@@ -21,6 +23,10 @@ loader(
     switch (component) {
       case 'initPerformance':
         render(h(PerformanceApp, { ...config }), el);
+        break;
+
+      case 'initPoolTable':
+        render(h(PoolTableApp, { ...config }), el);
         break;
 
       case 'initSubscription':

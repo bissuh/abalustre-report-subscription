@@ -6,15 +6,16 @@
   </head>
 
   <body>
-    <div id="onthly-report-list"></div>
+    <div id="pool-table"></div>
 
+    <div style="display: none; width: 100%;">
+      <div id="monthly-report-button"></div>
+      <div id="subscription"></div>
+    </div>
+    <div id="onthly-report-list"></div>
     <div id="onthly-report-search"></div>
 
-    <div id="onthly-report-button"></div>
-
-    <div id="pool-performance"></div>
-
-    <div id="ubscription"></div>
+    <div id="ool-performance"></div>
 
     <div id="ool-description"></div>
 
@@ -46,6 +47,14 @@
         container: 'pool-performance',
         buttonColor: '#BE9836',
         language: 'en',
+      });
+
+      _aba('initPoolTable', {
+        id: '79215660-bc8d-11ea-8031-65ae3470199e',
+        widgetId: 'ede6d8c5-fcce-40c4-82ce-977f6f81e084',
+        container: 'pool-table',
+        language: 'en',
+        style: {},
       });
 
       _aba('poolDescription', {
