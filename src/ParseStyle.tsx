@@ -27,6 +27,10 @@ export default (style: Style | undefined, defaultStyle: Style | undefined) => {
 
   function searchObject(type: string, obj?: object | Style, key?: string) {
     for (const property in obj) {
+      if (!hasObject(obj[property])) {
+        styles[type][`${property}`] = obj[property];
+      }
+
       if (isObject(obj[property])) {
         searchObject(
           type,
