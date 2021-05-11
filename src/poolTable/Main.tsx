@@ -17,7 +17,6 @@ const DEFAULT_STYLES = {
       margin: '10px',
       fontFamily: 'sans-serif',
       borderCollapse: 'collapse',
-      border: '1px solid #ccc',
     },
     thead: {
       self: {
@@ -32,7 +31,7 @@ const DEFAULT_STYLES = {
     },
     tbody: {
       tr: {
-        borderBottom: 'solid 1px #ccc',
+        borderBottom: 'solid 1px rgba(0, 0, 0, 0.1)',
       },
       td: {
         self: {
