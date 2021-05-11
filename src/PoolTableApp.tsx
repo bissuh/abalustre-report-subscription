@@ -9,15 +9,6 @@ type Props = Configurations;
 export const PoolTableApp = ({ element, ...appSettings }: Props) => {
   const languages = { 'pt-BR': pt };
 
-  let defaultConfig = {
-    ...appSettings,
-    style: {
-      table: {
-        ...appSettings.table,
-      },
-    },
-  };
-
   return (
     <IntlProvider definition={languages[appSettings.language]}>
       <AppContext config={appSettings}>
