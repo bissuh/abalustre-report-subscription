@@ -142,7 +142,10 @@ const Main = () => {
                     width={15}
                     className={styles.tooltipTrigger}
                   />
-                  <div className={styles.tooltip}>
+                  <div
+                    className={styles.tooltip}
+                    style={finalStyle('table-tbody-td-tooltip')}
+                  >
                     {dayjs.utc(pool.start_date).format('DD/MM/YYYY')}
                   </div>
                 </div>
