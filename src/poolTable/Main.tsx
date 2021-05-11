@@ -1,4 +1,4 @@
-import { h } from 'preact';
+import { Fragment, h } from 'preact';
 import { useCallback, useContext, useEffect, useState } from 'preact/hooks';
 import dayjs from 'dayjs';
 import { Text } from 'preact-i18n';
@@ -9,6 +9,8 @@ import { WidgetPool } from '../models';
 import { numberFilters } from '../utils';
 import { PERIODS } from '../constants';
 import parseStyle from '../ParseStyle';
+
+import styles from './main.css';
 
 const DEFAULT_STYLES = {
   table: {
@@ -130,15 +132,20 @@ const Main = () => {
 
             <td style={finalStyle('table-tbody-td')}>
               {pool.start_date && (
-                <img
-                  style={{
-                    ...finalStyle('table-tbody-td-img'),
-                    cursor: 'pointer',
-                  }}
-                  alt={dayjs.utc(pool.start_date).format('DD/MM/YYYY')}
-                  src="https://abalustre-assets.s3.amazonaws.com/information.png"
-                  width={15}
-                />
+                <div className={styles.tooltipContainer}>
+                  <img
+                    style={{
+                      ...finalStyle('table-tbody-td-img'),
+                      cursor: 'pointer',
+                    }}
+                    src="https://abalustre-assets.s3.amazonaws.com/information.png"
+                    width={15}
+                    className={styles.tooltipTrigger}
+                  />
+                  <div className={styles.tooltip}>
+                    {dayjs.utc(pool.start_date).format('DD/MM/YYYY')}
+                  </div>
+                </div>
               )}
             </td>
 
