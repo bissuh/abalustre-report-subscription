@@ -8,6 +8,7 @@ import { ConfigContext } from '../AppContext';
 import { WidgetPool } from '../models';
 import { numberFilters } from '../utils';
 import { PERIODS } from '../constants';
+import parserStyle from './parseStyle';
 
 const Main = () => {
   const { format } = numberFilters;
@@ -41,37 +42,48 @@ const Main = () => {
     loadPools();
   }, [loadPools]);
 
+  const { style } = config;
+
+  const finalStyle = parserStyle(style);
+
   return (
-    <table>
-      <thead>
-        <tr>
-          <td>
+    <table style={finalStyle('table')}>
+      <thead style={finalStyle('table-thead')}>
+        <tr style={finalStyle('table-thead-tr')}>
+          <td style={finalStyle('table-thead-td')}>
             <Text id="fund">fund</Text>
           </td>
-          <td></td>
-          <td>
+          <td style={finalStyle('table-thead-td')}></td>
+          <td style={finalStyle('table-thead-td')}>
             <Text id="date">date</Text>
           </td>
-          <td>
+          <td style={finalStyle('table-thead-td')}>
             <Text id="quota">quota</Text>
           </td>
-          <td>
+          <td style={finalStyle('table-thead-td')}>
             <Text id="day">day</Text>
           </td>
           {widget?.data.periods.map((item: string) => (
-            <td>
+            <td style={finalStyle('table-thead-td')}>
               <Text id={item}>{PERIODS.DETAILS[item].label}</Text>
             </td>
           ))}
-          <td style={{ textAlign: 'center' }}>status</td>
+          <td
+            style={
+              { ...finalStyle('table-thead-td'), textAlign: 'center' } ?? {}
+            }
+          >
+            status
+          </td>
         </tr>
       </thead>
-      <tbody>
+      <tbody style={finalStyle('table-tbody')}>
         {pools.map((pool) => (
-          <tr id={pool.id}>
-            <td style={{ verticalAlign: 'top' }}>
+          <tr style={finalStyle('table-tbody-tr')} id={pool.id}>
+            <td style={{ ...finalStyle('table-tbody-td') } ?? {}}>
               {pool.details_webpage ? (
                 <a
+                  style={finalStyle('table-tbody-tr-a')}
                   href={`${pool.details_webpage}?utm_source=website&utm_medium=widget`}
                 >
                   {pool.name}
@@ -81,22 +93,25 @@ const Main = () => {
               )}
             </td>
 
-            <td>
+            <td style={finalStyle('table-tbody-td')}>
               {pool.start_date && (
-                <div>
-                  <img
-                    alt={dayjs.utc(pool.start_date).format('DD/MM/YYYY')}
-                    src="https://abalustre-assets.s3.amazonaws.com/information.png"
-                    style={{ cursor: 'pointer' }}
-                    width={15}
-                  />
-                </div>
+                <img
+                  style={{
+                    ...finalStyle('table-tbody-td-img'),
+                    cursor: 'pointer',
+                  }}
+                  alt={dayjs.utc(pool.start_date).format('DD/MM/YYYY')}
+                  src="https://abalustre-assets.s3.amazonaws.com/information.png"
+                  width={15}
+                />
               )}
             </td>
 
-            <td>{pool.date && dayjs.utc(pool.date).format('DD MMM YY')}</td>
+            <td style={finalStyle('table-tbody-td')}>
+              {pool.date && dayjs.utc(pool.date).format('DD MMM YY')}
+            </td>
 
-            <td>
+            <td style={finalStyle('table-tbody-td')}>
               {format({
                 value: pool.quota,
                 divisor: 100000000,
@@ -107,7 +122,7 @@ const Main = () => {
               })}
             </td>
 
-            <td>
+            <td style={finalStyle('table-tbody-td')}>
               {format({
                 value: pool.day,
                 locale: config.language,
@@ -122,7 +137,7 @@ const Main = () => {
             {widget?.data.periods.map((item: string) => {
               if (pool[item])
                 return (
-                  <td>
+                  <td style={finalStyle('table-tbody-td')}>
                     {format({
                       value: pool[item],
                       locale: config.language,
@@ -135,10 +150,14 @@ const Main = () => {
                   </td>
                 );
 
-              return <td>-</td>;
+              return <td style={finalStyle('table-tbody-td')}>-</td>;
             })}
 
-            <td style={{ textAlign: 'center' }}>
+            <td
+              style={
+                { ...finalStyle('table-tbody-td'), textAlign: 'center' } ?? {}
+              }
+            >
               {pool.start_date && <Text id={pool.status}>{pool.status}</Text>}
             </td>
           </tr>

@@ -54,7 +54,42 @@
         widgetId: 'ede6d8c5-fcce-40c4-82ce-977f6f81e084',
         container: 'pool-table',
         language: 'en',
-        style: {},
+        style: {
+          table: {
+            self: {
+              padding: "32px",
+              margin: "10px",
+              fontFamily: "sans-serif",
+              borderCollapse: "collapse"
+            },
+            thead: {
+              self: {
+                textTransform: "uppercase",
+                fontWeight: "bold",
+                borderTop: "solid 3px #000",
+                borderBottom: "solid 3px #000",
+                margin: "10px"
+              },
+              tr: {
+                margin: "10px"
+              },
+              td: {
+                padding: "10px",
+              }
+            },
+            tbody: {
+              tr: {
+                borderBottom: "solid 1px #ccc",
+              },
+              td: {
+                self: {
+                  padding: "10px",
+                  paddingLeft: "0"
+                },
+              }
+            }
+          }
+        },
       });
 
       _aba('poolDescription', {

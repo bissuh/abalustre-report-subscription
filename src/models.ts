@@ -13,6 +13,9 @@ export interface AumReportModel {
   aum_strategy: string;
 }
 
+export interface Style {
+  [key: string]: string | number | Style;
+}
 export interface AppConfigurations {
   buttonColor: string;
   buttonLabel?: string;
@@ -21,7 +24,7 @@ export interface AppConfigurations {
   language: string;
   poolId?: string;
   widgetId?: string;
-  style?: object;
+  style?: { [key: string]: Style };
 }
 
 export type Configurations = InfraConfigurations & AppConfigurations;
