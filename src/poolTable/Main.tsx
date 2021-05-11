@@ -10,6 +10,42 @@ import { numberFilters } from '../utils';
 import { PERIODS } from '../constants';
 import parserStyle from './parseStyle';
 
+const DEFAULT_STYLES = {
+  table: {
+    self: {
+      padding: '32px',
+      margin: '10px',
+      fontFamily: 'sans-serif',
+      borderCollapse: 'collapse',
+      border: '1px solid #ccc',
+    },
+    thead: {
+      self: {
+        textTransform: 'uppercase',
+        fontWeight: 'bold',
+        borderTop: 'solid 3px #000',
+        borderBottom: 'solid 3px #000',
+      },
+      td: {
+        padding: '12px',
+      },
+    },
+    tbody: {
+      tr: {
+        borderBottom: 'solid 1px #ccc',
+      },
+      td: {
+        self: {
+          padding: '12px',
+        },
+        a: {
+          color: '#000',
+        },
+      },
+    },
+  },
+};
+
 const Main = () => {
   const { format } = numberFilters;
   const service = useContext(ServiceContext);
@@ -44,7 +80,7 @@ const Main = () => {
 
   const { style } = config;
 
-  const finalStyle = parserStyle(style);
+  const finalStyle = parserStyle(style, DEFAULT_STYLES);
 
   return (
     <table style={finalStyle('table')}>
@@ -83,7 +119,7 @@ const Main = () => {
             <td style={{ ...finalStyle('table-tbody-td') } ?? {}}>
               {pool.details_webpage ? (
                 <a
-                  style={finalStyle('table-tbody-tr-a')}
+                  style={finalStyle('table-tbody-td-a')}
                   href={`${pool.details_webpage}?utm_source=website&utm_medium=widget`}
                 >
                   {pool.name}
@@ -153,11 +189,7 @@ const Main = () => {
               return <td style={finalStyle('table-tbody-td')}>-</td>;
             })}
 
-            <td
-              style={
-                { ...finalStyle('table-tbody-td'), textAlign: 'center' } ?? {}
-              }
-            >
+            <td style={finalStyle('table-tbody-td')}>
               {pool.start_date && <Text id={pool.status}>{pool.status}</Text>}
             </td>
           </tr>

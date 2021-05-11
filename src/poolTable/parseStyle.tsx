@@ -1,5 +1,10 @@
 import { Style } from '../models';
 
+interface Styles {
+  custom: Record<string, { [key: string]: number | string }>;
+  init: Record<string, { [key: string]: number | string }>;
+}
+
 function isObject(obj: any) {
   return typeof obj === 'object';
 }
@@ -14,17 +19,24 @@ function hasObject(obj: object) {
   return false;
 }
 
-export default (style: Style | undefined) => {
-  const styles: Record<string, { [key: string]: number | string }> = {};
+export default (style: Style | undefined, defaultStyle: Style | undefined) => {
+  const styles: Styles = {
+    custom: {},
+    init: {},
+  };
 
-  function searchObject(obj?: object | Style, key?: string) {
+  function searchObject(type: string, obj?: object | Style, key?: string) {
     for (const property in obj) {
       if (isObject(obj[property])) {
-        searchObject(obj[property], `${key || ''}${key ? '-' : ''}${property}`);
+        searchObject(
+          type,
+          obj[property],
+          `${key || ''}${key ? '-' : ''}${property}`
+        );
 
-        if (!hasObject(obj[property])) {
+        if (!hasObject(obj[property]) || !/&/gu.test(property)) {
           if (key) {
-            styles[`${key}-${property}`] = obj[property];
+            styles[type][`${key}-${property}`] = obj[property];
           }
         }
       } else {
@@ -32,11 +44,15 @@ export default (style: Style | undefined) => {
     }
   }
 
-  searchObject(style);
+  searchObject('custom', style);
+  searchObject('init', defaultStyle);
 
   return (selector: string) => {
-    if (styles[`${selector}-self`]) return styles[`${selector}-self`];
+    const style1 =
+      styles['init'][`${selector}-self`] ?? styles['init'][selector];
+    const style2 =
+      styles['custom'][`${selector}-self`] ?? styles['custom'][selector];
 
-    return styles[selector];
+    return { ...style1, ...style2 };
   };
 };

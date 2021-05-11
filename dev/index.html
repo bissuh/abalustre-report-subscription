@@ -57,39 +57,30 @@
         style: {
           table: {
             self: {
-              padding: "32px",
-              margin: "10px",
-              fontFamily: "sans-serif",
-              borderCollapse: "collapse"
+              padding: '32px',
+              margin: '10px',
+              fontFamily: 'sans-serif',
+              borderCollapse: 'collapse',
+              border: '1px solid #ccc',
             },
             thead: {
               self: {
-                textTransform: "uppercase",
-                fontWeight: "bold",
-                borderTop: "solid 3px #000",
-                borderBottom: "solid 3px #000",
-                margin: "10px"
+                borderTop: 'solid 3px #00f',
+                borderBottom: 'solid 3px #00f',
               },
-              tr: {
-                margin: "10px"
-              },
-              td: {
-                padding: "10px",
-              }
             },
             tbody: {
               tr: {
-                borderBottom: "solid 1px #ccc",
+                borderBottom: 'solid 1px #ccc',
               },
               td: {
-                self: {
-                  padding: "10px",
-                  paddingLeft: "0"
+                a: {
+                  color: '#00f',
                 },
-              }
-            }
+              },
+            },
           }
-        },
+        }
       });
 
       _aba('poolDescription', {
