@@ -8,7 +8,7 @@ import { ConfigContext } from '../AppContext';
 import { WidgetPool } from '../models';
 import { numberFilters } from '../utils';
 import { PERIODS } from '../constants';
-import parserStyle from './parseStyle';
+import parsetStyle from '../ParseStyle';
 
 const DEFAULT_STYLES = {
   table: {
@@ -80,7 +80,7 @@ const Main = () => {
 
   const { style } = config;
 
-  const finalStyle = parserStyle(style, DEFAULT_STYLES);
+  const finalStyle = parsetStyle(style, DEFAULT_STYLES);
 
   return (
     <table style={finalStyle('table')}>

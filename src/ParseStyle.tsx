@@ -1,4 +1,4 @@
-import { Style } from '../models';
+import { Style } from './models';
 
 interface Styles {
   custom: Record<string, { [key: string]: number | string }>;
