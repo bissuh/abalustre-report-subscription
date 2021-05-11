@@ -34,12 +34,11 @@ export default (style: Style | undefined, defaultStyle: Style | undefined) => {
           `${key || ''}${key ? '-' : ''}${property}`
         );
 
-        if (!hasObject(obj[property]) || !/&/gu.test(property)) {
+        if (!hasObject(obj[property])) {
           if (key) {
             styles[type][`${key}-${property}`] = obj[property];
           }
         }
-      } else {
       }
     }
   }
