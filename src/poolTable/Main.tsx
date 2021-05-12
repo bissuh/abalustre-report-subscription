@@ -45,6 +45,9 @@ const DEFAULT_STYLES = {
       },
     },
   },
+  'last-column': {
+    textTransform: 'capitalize',
+  },
 };
 
 const Main = () => {
@@ -198,7 +201,12 @@ const Main = () => {
               return <td style={finalStyle('table-tbody-td')}>-</td>;
             })}
 
-            <td style={finalStyle('table-tbody-td')}>
+            <td
+              style={{
+                ...finalStyle('table-tbody-td'),
+                ...finalStyle('last-column'),
+              }}
+            >
               {pool.start_date && <Text id={pool.status}>{pool.status}</Text>}
             </td>
           </tr>
