@@ -8,6 +8,47 @@ import { ConfigContext } from '../AppContext';
 import { WidgetPool } from '../models';
 import { numberFilters } from '../utils';
 import { PERIODS } from '../constants';
+import parseStyle from '../ParseStyle';
+
+import styles from './main.css';
+
+const DEFAULT_STYLES = {
+  table: {
+    self: {
+      padding: '32px',
+      margin: '10px',
+      fontFamily: 'sans-serif',
+      borderCollapse: 'collapse',
+    },
+    thead: {
+      self: {
+        textTransform: 'uppercase',
+        fontWeight: 'bold',
+        borderTop: 'solid 3px #000',
+        borderBottom: 'solid 3px #000',
+      },
+      td: {
+        padding: '12px',
+      },
+    },
+    tbody: {
+      tr: {
+        borderBottom: 'solid 1px rgba(0, 0, 0, 0.1)',
+      },
+      td: {
+        self: {
+          padding: '12px',
+        },
+        a: {
+          color: '#000',
+        },
+      },
+    },
+  },
+  'last-column': {
+    textTransform: 'capitalize',
+  },
+};
 
 const Main = () => {
   const { format } = numberFilters;
@@ -41,37 +82,48 @@ const Main = () => {
     loadPools();
   }, [loadPools]);
 
+  const { style } = config;
+
+  const finalStyle = parseStyle(style, DEFAULT_STYLES);
+
   return (
-    <table>
-      <thead>
-        <tr>
-          <td>
+    <table style={finalStyle('table')}>
+      <thead style={finalStyle('table-thead')}>
+        <tr style={finalStyle('table-thead-tr')}>
+          <td style={finalStyle('table-thead-td')}>
             <Text id="fund">fund</Text>
           </td>
-          <td></td>
-          <td>
+          <td style={finalStyle('table-thead-td')}></td>
+          <td style={finalStyle('table-thead-td')}>
             <Text id="date">date</Text>
           </td>
-          <td>
+          <td style={finalStyle('table-thead-td')}>
             <Text id="quota">quota</Text>
           </td>
-          <td>
+          <td style={finalStyle('table-thead-td')}>
             <Text id="day">day</Text>
           </td>
           {widget?.data.periods.map((item: string) => (
-            <td>
+            <td style={finalStyle('table-thead-td')}>
               <Text id={item}>{PERIODS.DETAILS[item].label}</Text>
             </td>
           ))}
-          <td style={{ textAlign: 'center' }}>status</td>
+          <td
+            style={
+              { ...finalStyle('table-thead-td'), textAlign: 'center' } ?? {}
+            }
+          >
+            status
+          </td>
         </tr>
       </thead>
-      <tbody>
+      <tbody style={finalStyle('table-tbody')}>
         {pools.map((pool) => (
-          <tr id={pool.id}>
-            <td style={{ verticalAlign: 'top' }}>
+          <tr style={finalStyle('table-tbody-tr')} id={pool.id}>
+            <td style={{ ...finalStyle('table-tbody-td') } ?? {}}>
               {pool.details_webpage ? (
                 <a
+                  style={finalStyle('table-tbody-td-a')}
                   href={`${pool.details_webpage}?utm_source=website&utm_medium=widget`}
                 >
                   {pool.name}
@@ -81,22 +133,41 @@ const Main = () => {
               )}
             </td>
 
-            <td>
+            <td style={finalStyle('table-tbody-td')}>
               {pool.start_date && (
-                <div>
+                <div className={styles.tooltipContainer}>
                   <img
-                    alt={dayjs.utc(pool.start_date).format('DD/MM/YYYY')}
+                    style={{
+                      ...finalStyle('table-tbody-td-img'),
+                      cursor: 'pointer',
+                    }}
                     src="https://abalustre-assets.s3.amazonaws.com/information.png"
-                    style={{ cursor: 'pointer' }}
                     width={15}
+                    className={styles.tooltipTrigger}
                   />
+                  <div
+                    className={styles.tooltip}
+                    style={finalStyle('table-tbody-td-tooltip')}
+                  >
+                    <p>
+                      <b>{pool.fullname}</b>
+                    </p>
+                    <p>
+                      <Text id="since">Since</Text>
+                      {': '}
+                      {dayjs.utc(pool.date).format('DD MMM YY')}
+                    </p>
+                    <p>CNPJ: {pool.document}</p>
+                  </div>
                 </div>
               )}
             </td>
 
-            <td>{pool.date && dayjs.utc(pool.date).format('DD MMM YY')}</td>
+            <td style={finalStyle('table-tbody-td')}>
+              {pool.date && dayjs.utc(pool.date).format('DD MMM YY')}
+            </td>
 
-            <td>
+            <td style={finalStyle('table-tbody-td')}>
               {format({
                 value: pool.quota,
                 divisor: 100000000,
@@ -107,7 +178,7 @@ const Main = () => {
               })}
             </td>
 
-            <td>
+            <td style={finalStyle('table-tbody-td')}>
               {format({
                 value: pool.day,
                 locale: config.language,
@@ -122,7 +193,7 @@ const Main = () => {
             {widget?.data.periods.map((item: string) => {
               if (pool[item])
                 return (
-                  <td>
+                  <td style={finalStyle('table-tbody-td')}>
                     {format({
                       value: pool[item],
                       locale: config.language,
@@ -135,10 +206,15 @@ const Main = () => {
                   </td>
                 );
 
-              return <td>-</td>;
+              return <td style={finalStyle('table-tbody-td')}>-</td>;
             })}
 
-            <td style={{ textAlign: 'center' }}>
+            <td
+              style={{
+                ...finalStyle('table-tbody-td'),
+                ...finalStyle('last-column'),
+              }}
+            >
               {pool.start_date && <Text id={pool.status}>{pool.status}</Text>}
             </td>
           </tr>

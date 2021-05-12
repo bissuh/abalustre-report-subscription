@@ -1,0 +1,28 @@
+.tooltipContainer {
+  position: relative;
+}
+
+.tooltip {
+  min-width: 300px;
+  visibility: hidden;
+  background-color: black;
+  color: #fff;
+  padding: 5px 10px;
+  top: -35px;
+  left: 14px;
+  text-transform: capitalize;
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip p {
+  margin: 5px 0;
+}
+
+.tooltipTrigger:hover + .tooltip {
+  visibility: visible;
+}
+
+.tooltip:hover {
+  visibility: visible;
+}
