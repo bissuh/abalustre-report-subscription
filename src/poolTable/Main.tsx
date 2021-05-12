@@ -1,4 +1,4 @@
-import { Fragment, h } from 'preact';
+import { h } from 'preact';
 import { useCallback, useContext, useEffect, useState } from 'preact/hooks';
 import dayjs from 'dayjs';
 import { Text } from 'preact-i18n';
@@ -149,7 +149,15 @@ const Main = () => {
                     className={styles.tooltip}
                     style={finalStyle('table-tbody-td-tooltip')}
                   >
-                    {dayjs.utc(pool.start_date).format('DD/MM/YYYY')}
+                    <p>
+                      <b>{pool.fullname}</b>
+                    </p>
+                    <p>
+                      <Text id="since">Since</Text>
+                      {': '}
+                      {dayjs.utc(pool.date).format('DD MMM YY')}
+                    </p>
+                    <p>CNPJ: {pool.document}</p>
                   </div>
                 </div>
               )}
