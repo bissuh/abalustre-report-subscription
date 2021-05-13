@@ -15,14 +15,14 @@ Copy and paste the code below in the footer of your site. ake sure the `_aba('in
     js = d.createElement(s), fjs = d.getElementsByTagName(s)[0];
     js.id = o; js.src = f; js.async = 1; fjs.parentNode.insertBefore(js, fjs);
 }(window, document, 'script', '_aba', 'https://abalustre-report-subscription.s3.amazonaws.com/widget.js'));
-_aba('init'); 
+_aba('init');
 </script>
 ```
 
 ## Subscription
 
 ```js
-_aba('initSubscription', { id: 'your-organization-id' }); 
+_aba('initSubscription', { id: 'your-organization-id' });
 ```
 
 #### Options
@@ -38,9 +38,9 @@ You will place options in the `_aba('initSubscription', {<options>})` init file 
 
 ```js
 _aba('initPerformance', {
-  id: 'your-organization-id', 
-  widgetId: 'a-pool-id' 
-}); 
+  id: 'your-organization-id',
+  widgetId: 'a-pool-id'
+});
 ```
 
 #### Options
@@ -55,10 +55,10 @@ You will place options in the `_aba('initPerformance', {<options>})` init file a
 ## Pool Description
 
 ```js
-_aba('poolDescription', { 
-  id: 'your-organization-id', 
-  poolId: 'a-pool-id' 
-}); 
+_aba('poolDescription', {
+  id: 'your-organization-id',
+  poolId: 'a-pool-id'
+});
 ```
 
 #### Options
@@ -69,6 +69,21 @@ You will place options in the `_aba('initPerformance', {<options>})` init file a
 | - | - |
 | `language` | Set the language to be used in table render. Options: `pt`. Default: `en`. |
 | `container` | HTML element ID where the button is going to be placed. When no element is found, the button is going to be ommited. |
+
+## Pool Table
+
+#### Options
+
+...
+#### Style Options
+
+These are selectors you can pass in the style
+
+| Option | Description |
+| - | - |
+| `last-column` | The last colums of the table |
+| `tooltip` | The tooltip that apperns when you hover the info icon. |
+| `info-icon` | The info icon. Example: You can pass `fill: #00f` (svg style options) to turn it blue |
 
 ## Monthly Report Button
 
