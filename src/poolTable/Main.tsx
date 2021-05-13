@@ -57,6 +57,8 @@ const Main = () => {
   const [pools, setPools] = useState<any[]>([]);
   const [widget, setWidget] = useState<WidgetPool | undefined>(undefined);
 
+  dayjs.locale(config.language === 'pt-BR' ? 'pt-br' : 'en');
+
   const loadPools = useCallback(async () => {
     const widgetResponse = await service?.getWidgetPools();
     const poolsList = widgetResponse?.data.pools || [];
